@@ -12,6 +12,9 @@ struct Constants {
         struct Products {
             public static let productList = "/products.json"
         }
+        struct ProductDetails{
+            public static let productDetails = "/products/7782820643045.json"
+        }
         struct Brands {
             public static let brandsList = "/smart_collections.json"
         }

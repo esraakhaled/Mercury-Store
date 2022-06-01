@@ -9,6 +9,7 @@ import RxSwift
 protocol CategoriesProvider: AnyObject {
     func getCategoriesCollection() -> Observable<SmartCollection>
     func getCategoryProductsCollection(collectionID:Int) -> Observable<ProductsCategory>
+    func getCategoryProductsDetails(productID:Int) -> Observable<Product>
 }
 
 class CategoriesScreenAPI: CategoriesProvider {
@@ -20,4 +21,8 @@ class CategoriesScreenAPI: CategoriesProvider {
     func getCategoriesCollection() -> Observable<SmartCollection> {
         NetworkService.execute(CategoryScreenAPIs.getCategories)
     }
+    func getCategoryProductsDetails(productID:Int) -> Observable<Product>{
+        NetworkService.execute(CategoryScreenAPIs.getProductsDetails(productID))
+    }
+    
 }

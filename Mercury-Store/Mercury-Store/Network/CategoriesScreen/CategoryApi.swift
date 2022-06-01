@@ -11,6 +11,7 @@ import Alamofire
 enum CategoryScreenAPIs: URLRequestBuilder {
     case getCategories
     case getProducts(Int)
+    case getProductsDetails(Int)
 }
 
 extension CategoryScreenAPIs {
@@ -20,6 +21,8 @@ extension CategoryScreenAPIs {
             return Constants.Pathes.Categories.brandsList
         case .getProducts:
             return Constants.Pathes.Products.productList
+        case .getProductsDetails:
+            return Constants.Pathes.ProductDetails.productDetails
         }
     }
 }
@@ -31,6 +34,8 @@ extension CategoryScreenAPIs {
             return [:]
         case .getProducts(let  value):
             return ["collection_id": value]
+        case .getProductsDetails(let value):
+            return ["product_id":value]
         }
     }
 }
@@ -41,6 +46,8 @@ extension CategoryScreenAPIs {
         case .getCategories:
             return HTTPMethod.get
         case .getProducts:
+            return HTTPMethod.get
+        case .getProductsDetails:
             return HTTPMethod.get
         }
     }
