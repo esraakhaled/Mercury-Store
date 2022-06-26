@@ -11,31 +11,47 @@ import RxSwift
 
 class ProfileViewController: UIViewController {
     
-    
-    var viewModel: ProfileViewModel!
-    let disposeBag = DisposeBag()
+    // MARK: - IBOutlets
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var logoutBtn: UIButton!
     
+    // MARK: - Properties
+    private var viewModel: ProfileViewModel!
+    private let disposeBag = DisposeBag()
     
+    // MARK: - Set up
+    init(with viewModel: ProfileViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+        title = "Profile"
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       // view.backgroundColor = .lightGray
+        setUpUI()
         configureTableView()
-      
         configureSectionModel()
-        
-       // self.tableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "cell")
-
+        self.loadUserData()
     }
-
-    @IBAction func didPressedOnCartButton(_ sender: Any) {
-        
+    private func setUpUI() {
+        self.logoutBtn.tintColor = ColorsPalette.lightColor
+      
     }
-    
+    // MARK: - IBActions
     @IBAction func logoutAction(_ sender: Any) {
         self.viewModel.goToMainTab()
+    }
+    // MARK: - Private handlers
+    private func loadUserData(){
+        let user = viewModel.getUserInfo()
+        userName.text = user?.username
+        userEmail.text = user?.email
     }
     private func configureSectionModel() {
         // 1
@@ -47,18 +63,6 @@ class ProfileViewController: UIViewController {
             .sectionModels
             .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        // 4
-        /*tableView.rx.modelSelected(ProfileSectionItem.self)
-            .asDriver()
-            .drive(onNext: { [weak self] model in
-                switch model {
-                case .aboutItem(image: let image, title: let title):
-                    //self?.presentAlert( message: title)
-                
-                default: break
-                }
-            }).disposed(by: disposeBag)*/
         tableView.rx.itemSelected.subscribe(onNext: {[weak self] IndexPath in
             switch IndexPath.section{
             case 0:
@@ -84,29 +88,22 @@ class ProfileViewController: UIViewController {
     }
     func configureTableView() {
         tableView.register(UINib(nibName: "ProfileCell", bundle: nil), forCellReuseIdentifier: "cell")
-       // tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-  /*  private func presentAlert( message: String) {
-        let alert = UIAlertController(title: "\(title) Selected", message: "It cost you \(message)", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    */
 }
+
+// MARK: - Extensions
 extension ProfileViewController {
+    
     static func dataSource() -> RxTableViewSectionedReloadDataSource<ProfileSectionModel> {
         return RxTableViewSectionedReloadDataSource<ProfileSectionModel>(
             configureCell: { dataSource, tableView, indexPath, _ in
-               // let cell: ProfileCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProfileCell
             switch dataSource[indexPath] {
             case let .myAccountItem(image: image,title: title):
                 let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
                      cell.selectionStyle = .none
                      cell.backgroundColor = .clear
-                cell.imageView?.tintColor = .label
+               // cell.imageView?.tintColor = .label
+                cell.imageView?.tintColor = ColorsPalette.lightColor
                      cell.textLabel?.text = title
                      cell.imageView?.image = image
                      cell.accessoryType = .disclosureIndicator
@@ -115,7 +112,8 @@ extension ProfileViewController {
                 let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
                 cell.selectionStyle = .none
                 cell.backgroundColor = .clear
-                cell.imageView?.tintColor = .label
+                //cell.imageView?.tintColor = .label
+                cell.imageView?.tintColor = ColorsPalette.lightColor
                 cell.textLabel?.text = title
                 cell.imageView?.image = image
                 cell.accessoryType = .disclosureIndicator

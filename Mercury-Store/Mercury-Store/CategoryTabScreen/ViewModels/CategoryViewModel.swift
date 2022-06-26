@@ -12,6 +12,7 @@ protocol CategoriesScreenViewModelType {
     var isLoading: Driver<Bool> { get }
     var categories: Driver<[CustomCollection]> { get}
     var error: Driver<String?> { get }
+    func goToSearchViewController()
 }
 
 
@@ -55,7 +56,9 @@ final class CategoriesScreenViewModel: CategoriesScreenViewModelType {
                         self?.errorSubject.accept(error.localizedDescription)
                     }.disposed(by: disposeBag)
     }
-    
+    func goToSearchViewController() {
+        self.categoriesNavigationFlow?.goToSearchScreen()
+    }
     
 }
 

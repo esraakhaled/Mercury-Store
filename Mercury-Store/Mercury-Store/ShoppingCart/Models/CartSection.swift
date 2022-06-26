@@ -25,6 +25,11 @@ extension CartSection {
         }
     }
     
+    var totalPrice: Double{
+        rows.reduce(0) { result, row in
+            result + row.products.productPrice
+        }
+    }
     var sectionTotal: Double {
         rows.reduce(0) { result, row in
             result + row.rowTotal

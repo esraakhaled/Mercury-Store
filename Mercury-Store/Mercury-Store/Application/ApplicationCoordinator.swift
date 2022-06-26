@@ -20,14 +20,20 @@ class ApplicationCoordinator : Coordinator {
     }
     
     func start() {
-       goToHomeTabbar()
+       goToLaunchScreen()
     }
     
-    func goToLaunchScreen(){
+    func goToLaunchScreen() {
+        let launchCoordinator = LaunchScreenCoordinator(navigationController: navigationController)
+        children.removeAll()
         
+        launchCoordinator.parentCoordinator = self
+        
+        children.append(launchCoordinator)
+        launchCoordinator.start()
     }
     
-    func goToHomeTabbar(){
+    func goToHomeTabbar() {
         let coordinator = HomeTabBarCoordinator(navigationController: navigationController)
         children.removeAll()
         

@@ -8,10 +8,14 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-    
+    // MARK: - Life cycle
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: - Set up
+    //
     init() {
         super.init(nibName: nil, bundle: nil)
         

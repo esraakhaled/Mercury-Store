@@ -49,6 +49,7 @@
                 <outlet property="createdAt" destination="oQw-Fa-sUh" id="sui-5w-l6Q"/>
                 <outlet property="paid" destination="RWh-X4-D2Z" id="YHp-KJ-NdO"/>
                 <outlet property="price" destination="bLQ-2C-RzA" id="iZt-2I-3Li"/>
+                <outlet property="viewContainer" destination="H2p-sc-9uM" id="dlb-Qy-uCR"/>
             </connections>
             <point key="canvasLocation" x="367" y="82"/>
         </tableViewCell>

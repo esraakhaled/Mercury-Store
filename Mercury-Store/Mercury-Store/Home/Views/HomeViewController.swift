@@ -12,8 +12,8 @@ import ProgressHUD
 
 class HomeViewController: UIViewController {
     
-    
-    
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var homeTableView: UITableView! {
         didSet {
             homeTableView.register(UINib(nibName: String(describing: LogoTableViewCell.self), bundle: nil), forCellReuseIdentifier: LogoTableViewCell.reuseIdentifier())
@@ -29,7 +29,11 @@ class HomeViewController: UIViewController {
     private var viewModel: HomeViewModel!
     private var brandViewModel: BrandsViewModel!
     private var categoryViewModel: CategoriesViewModel!
-    
+    let connection = NetworkReachability.shared
+
+    // MARK: - Set up
+    //
+
     init(with viewModel: HomeViewModel, and brandViewModel: BrandsViewModel, categoryViewModel: CategoriesViewModel) {
         super.init(nibName: String(describing: HomeViewController.self), bundle: nil)
         self.viewModel = viewModel
@@ -50,8 +54,15 @@ class HomeViewController: UIViewController {
         bindTableView()
         bindActivity()
         bindCartBadgeValue()
+        viewModel.getDraftOrderById()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        connection.checkNetwork(target: self)
+    }
+    // MARK: - Private handlers
+    //
     private func bindCartBadgeValue() {
         let cartTab = self.navigationController?.tabBarController?.tabBar.items![2]
         if(CoreDataModel.coreDataInstatnce.count == nil) {
@@ -74,7 +85,7 @@ class HomeViewController: UIViewController {
     
 
 }
-
+// MARK: - Extensions
 extension HomeViewController {
     private func bindTableView() {
         homeTableView.delegate = nil
@@ -90,7 +101,7 @@ extension HomeViewController {
         .disposed(by: disposeBag)
     }
 }
-
+// MARK: - Extensions
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -110,8 +121,10 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
 }
-
+// MARK: - Extensions
 extension HomeViewController {
+    // MARK: - Private handlers
+    //
     typealias DataSource = RxTableViewSectionedReloadDataSource
     private func dataSource() -> DataSource<HomeTableViewSection> {
         return  .init(configureCell: {[weak self] dataSource, tableView, indexPath, item -> UITableViewCell in

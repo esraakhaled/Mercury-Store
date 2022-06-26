@@ -11,6 +11,8 @@ import RxCocoa
 import ProgressHUD
 
 class BrandDetailViewController: UIViewController, UIScrollViewDelegate {
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var containerViewForBrandImage: UIView!
     @IBOutlet weak private var brandImageView: UIImageView!
     @IBOutlet weak private var brandTitleLabel: UILabel!
@@ -20,10 +22,13 @@ class BrandDetailViewController: UIViewController, UIScrollViewDelegate {
             productsForBrandCollectionView.register(UINib(nibName: BrandProductsCollectionViewCell.reuseIdentifier(), bundle: nil), forCellWithReuseIdentifier: BrandProductsCollectionViewCell.reuseIdentifier())
         }
     }
-    
+    // MARK: - Properties
+    //
     private let disposeBag = DisposeBag()
     private var viewModel: BrandDetailsViewModelType!
-    
+    let connection = NetworkReachability.shared
+    // MARK: - Set up
+    //
     init(with viewModel: BrandDetailsViewModelType) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
@@ -40,12 +45,16 @@ class BrandDetailViewController: UIViewController, UIScrollViewDelegate {
         self.configure()    
         
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        connection.checkNetwork(target: self)
+    }
 }
 
-//MARK: Private Handlers
-//
+// MARK: - Extensions
 extension BrandDetailViewController {
+    //MARK: Private Handlers
+    //
     private func configure() {
         self.bindCollectionView()
         setupView()
@@ -54,14 +63,15 @@ extension BrandDetailViewController {
         bindActivity()
     }
 }
-
+// MARK: - Extensions
 extension BrandDetailViewController {
+    //MARK: Private Handlers
+    //
     private func bindCollectionView() {
         productsForBrandCollectionView.dataSource = nil
         productsForBrandCollectionView.delegate = nil
         productsForBrandCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.productsForBrand.drive(productsForBrandCollectionView.rx.items(cellIdentifier: BrandProductsCollectionViewCell.reuseIdentifier(), cellType: BrandProductsCollectionViewCell.self)) { index, item , cell in
-            cell.isFavouriteProduct = self.viewModel.isProductFavourite(id: item.id)
             cell.item = item
         }.disposed(by: disposeBag)
         viewModel.fetchData()

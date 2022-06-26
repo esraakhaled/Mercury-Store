@@ -11,6 +11,7 @@ import RxCocoa
 protocol WishListViewModelType {
     var products: Driver<[SavedProductItem]> { get}
     var error: Driver<String?> { get }
+    var emptyView: Driver<Bool> { get }
     func getFavouriteItems()
     func updateItem(item:SavedProductItem)
     func deleteItem(item:SavedProductItem)
@@ -19,6 +20,12 @@ protocol WishListViewModelType {
 class WishListViewModel:WishListViewModelType{
     var products: Driver<[SavedProductItem]>
     var error: Driver<String?>
+    
+    private let emptyViewSubject = BehaviorRelay<Bool>(value: true)
+    var emptyView: Driver<Bool> {
+        return emptyViewSubject
+            .asDriver(onErrorJustReturn: true)
+    }
     
     private let productSubject = BehaviorRelay<[SavedProductItem]>(value: [])
     private let errorSubject = BehaviorRelay<String?>(value: nil)
@@ -32,13 +39,19 @@ class WishListViewModel:WishListViewModelType{
     func getFavouriteItems() {
         self.productSubject.accept([])
         self.errorSubject.accept(nil)
-        let items = self.coreDataModel.getItems(productState: productStates.favourite)
-        if(items.1 == nil){
-            self.productSubject.accept(items.0)
-            self.errorSubject.accept(nil)
+        let items = self.coreDataModel.getItemsByUserID()
+        if(items.0.isEmpty) {
+            self.emptyViewSubject.accept(false)
         }else {
-            self.errorSubject.accept(items.1?.localizedDescription)
+            if(items.1 == nil){
+                self.productSubject.accept(items.0)
+                self.errorSubject.accept(nil)
+                self.emptyViewSubject.accept(true)
+            }else {
+                self.errorSubject.accept(items.1?.localizedDescription)
+            }
         }
+        
     }
     
     func updateItem(item: SavedProductItem) {
@@ -54,7 +67,7 @@ class WishListViewModel:WishListViewModelType{
     }
     
     func deleteItem(item: SavedProductItem) {
-        let state = self.coreDataModel.delete(updateitem: item)
+        let state = self.coreDataModel.deleteFavouriteProduct(productID: Int(NSDecimalNumber(decimal: item.productID)))
         if (state) {
             self.errorSubject.accept(nil)
             getFavouriteItems()

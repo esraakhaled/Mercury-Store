@@ -9,4 +9,5 @@ import Foundation
 
 protocol CategoriesNavigationFlow: AnyObject {
     func gotToProductScreen(with id: Int, type: String)
+    func goToSearchScreen()
 }

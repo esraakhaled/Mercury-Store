@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,23 +17,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="309" height="163"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3up-JF-8vr">
-                        <rect key="frame" x="12" y="12" width="285" height="139"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVs-cd-zPK">
+                        <rect key="frame" x="4" y="4" width="301" height="155"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RGP-Jj-lXm">
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="155"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RGP-Jj-lXm" secondAttribute="trailing" id="7u1-RA-ctN"/>
+                            <constraint firstItem="RGP-Jj-lXm" firstAttribute="top" secondItem="KVs-cd-zPK" secondAttribute="top" id="9ym-Re-dW1"/>
+                            <constraint firstAttribute="bottom" secondItem="RGP-Jj-lXm" secondAttribute="bottom" id="QoZ-PR-8WI"/>
+                            <constraint firstItem="RGP-Jj-lXm" firstAttribute="leading" secondItem="KVs-cd-zPK" secondAttribute="leading" id="t2t-HB-IZ2"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="3up-JF-8vr" secondAttribute="bottom" constant="12" id="mhv-5A-Ppa"/>
-                <constraint firstItem="3up-JF-8vr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="ss0-Pb-yys"/>
-                <constraint firstItem="3up-JF-8vr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="x7q-V9-ll8"/>
-                <constraint firstAttribute="trailing" secondItem="3up-JF-8vr" secondAttribute="trailing" constant="12" id="yqA-HY-CZU"/>
+                <constraint firstItem="KVs-cd-zPK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="Pxx-h4-xGx"/>
+                <constraint firstAttribute="bottom" secondItem="KVs-cd-zPK" secondAttribute="bottom" constant="4" id="THa-d3-1dm"/>
+                <constraint firstAttribute="trailing" secondItem="KVs-cd-zPK" secondAttribute="trailing" constant="4" id="x4U-Dj-Evg"/>
+                <constraint firstItem="KVs-cd-zPK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="zIw-o0-XM4"/>
             </constraints>
             <size key="customSize" width="430" height="163"/>
             <connections>
-                <outlet property="bannerImageView" destination="3up-JF-8vr" id="Pcr-yp-0Rp"/>
+                <outlet property="cellCOntainer" destination="KVs-cd-zPK" id="zQr-gJ-1Kf"/>
+                <outlet property="imageCard" destination="RGP-Jj-lXm" id="gE5-Tu-gvf"/>
             </connections>
             <point key="canvasLocation" x="192.0289855072464" y="62.611607142857139"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

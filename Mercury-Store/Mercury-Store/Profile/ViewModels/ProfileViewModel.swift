@@ -19,11 +19,11 @@ protocol ProfileNavigationFlow: AnyObject {
 class ProfileViewModel {
     weak var profileNavigationFlow: ProfileNavigationFlow!
     private var _sectionModels: BehaviorSubject<[ProfileSectionModel]> = BehaviorSubject(value: [])
-    
-    init(profileNavigationFlow: ProfileNavigationFlow) {
+    private let sharedInstance: UserDefaults
+    init(profileNavigationFlow: ProfileNavigationFlow,sharedInstance: UserDefaults = UserDefaults.standard) {
         self.profileNavigationFlow = profileNavigationFlow
+        self.sharedInstance = sharedInstance
     }
-    
     var sectionModels: SharedSequence<DriverSharingStrategy, [ProfileSectionModel]> {
         return _sectionModels.asDriver(onErrorJustReturn: [])
     }
@@ -39,14 +39,20 @@ class ProfileViewModel {
                 
             ])
         ]
-        
         _sectionModels.onNext(sections)
+    }
+    func getUserInfo() -> User? {
+        do{
+            let user:User = try sharedInstance.getObject(forKey: "user", castTo: User.self)
+            return user
+        }catch( _){
+            return nil
+        }
     }
 }
 
 
 extension ProfileViewModel: ProfileNavigationFlow {
-    
     func goToMyOrdersScreen() {
         self.profileNavigationFlow.goToMyOrdersScreen()
     }

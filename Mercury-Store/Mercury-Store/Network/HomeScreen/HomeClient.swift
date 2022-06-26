@@ -15,14 +15,34 @@ protocol ProductsForBrandProvider: AnyObject {
     func getProductsForBrand(with id: Int) -> Observable<ProductsCategory>
 }
 
-class HomeScreenAPI: BrandsProvider {
+protocol ProductsProvider: AnyObject {
+    func getAllProducts() -> Observable<ProductsCategory>
+}
+
+protocol DraftOrderProvider: AnyObject {
+    func getDraftOrder(with id: Int) -> Observable<DraftOrderResponseTest>
+}
+
+class HomeScreenClient: BrandsProvider {
     func getBrandsCollection() -> Observable<SmartCollection> {
         NetworkService().execute(HomeScreenAPIs.getBrands)
     }
 }
 
-extension HomeScreenAPI: ProductsForBrandProvider {
+extension HomeScreenClient: ProductsForBrandProvider {
     func getProductsForBrand(with id: Int) -> Observable<ProductsCategory> {
         NetworkService().execute(HomeScreenAPIs.getProductsForBrand(id))
+    }
+}
+
+extension HomeScreenClient: ProductsProvider {
+    func getAllProducts() -> Observable<ProductsCategory> {
+        NetworkService().execute(HomeScreenAPIs.getAllProducts)
+    }
+}
+
+extension HomeScreenClient: DraftOrderProvider {
+    func getDraftOrder(with id: Int) -> Observable<DraftOrderResponseTest> {
+        NetworkService().execute(HomeScreenAPIs.getDraftOrders(id))
     }
 }

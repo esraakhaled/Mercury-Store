@@ -8,17 +8,19 @@
 import UIKit
 
 class ProductCell: UICollectionViewCell {
-
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak var cellContainer: UIView!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productIMG: UIImageView!
+    // MARK: - Properties
+    //
     static let identifier = "ProductCell"
     var cellClickAction:( (_ item:Product)->() )?
     var item:Product?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    // MARK: - Set up
+    //
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -26,6 +28,13 @@ class ProductCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    // MARK: - Life cycle
+    //
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    // MARK: - Private handlers
+    //
     public func configure(item:Product){
         guard let url = URL(string: item.image.src) else {
             return

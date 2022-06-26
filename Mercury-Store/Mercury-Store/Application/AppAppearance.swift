@@ -14,14 +14,15 @@ final class AppAppearance {
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.backgroundColor = UIColor(red: 37/255.0, green: 37/255.0, blue: 37.0/255.0, alpha: 1.0)
+            appearance.titleTextAttributes = [.foregroundColor: ColorsPalette.lightColor]
+            appearance.backgroundColor = ColorsPalette.labelColors
+            UINavigationBar.appearance().tintColor = ColorsPalette.lightColor
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
-            UINavigationBar.appearance().barTintColor = .black
-            UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().barTintColor = ColorsPalette.lightColor
+            UINavigationBar.appearance().tintColor = ColorsPalette.lightColor
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorsPalette.lightColor]
         }
     }
     
@@ -29,14 +30,15 @@ final class AppAppearance {
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            
-            appearance.backgroundColor = UIColor(red: 37/255.0, green: 37/255.0, blue: 37.0/255.0, alpha: 1.0)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: ColorsPalette.lightColor]
+            appearance.backgroundColor = ColorsPalette.labelColors
+            appearance.selectionIndicatorTintColor = ColorsPalette.lightColor
+            UITabBar.appearance().tintColor = ColorsPalette.lightColor
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().scrollEdgeAppearance = appearance
         } else {
-            UITabBar.appearance().barTintColor = .black
-           
-            UITabBar.appearance().tintColor = .white
+            UITabBar.appearance().barTintColor = ColorsPalette.labelColors
+            UITabBar.appearance().tintColor = ColorsPalette.labelColors
         }
     }
 }

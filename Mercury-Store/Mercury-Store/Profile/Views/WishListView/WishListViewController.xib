@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WishListViewController" customModule="Mercury_Store" customModuleProvider="target">
             <connections>
+                <outlet property="emptyImageView" destination="PhM-cq-ktD" id="fgc-Wm-wSA"/>
+                <outlet property="emptyView" destination="19A-WT-AUI" id="tbG-vt-8Qy"/>
                 <outlet property="tableView" destination="KMT-DA-xBC" id="b9K-gC-VJe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,13 +26,50 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="scrollIndicatorInsets" minX="414" minY="0.0" maxX="774" maxY="88"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19A-WT-AUI">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PhM-cq-ktD">
+                            <rect key="frame" x="12" y="42" width="390" height="245.5"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wishlist is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pb5-2n-a8C">
+                            <rect key="frame" x="12" y="329.5" width="390" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be sure to fill your wish list with something you like" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkQ-nW-M0g">
+                            <rect key="frame" x="12" y="377.5" width="390" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="EkQ-nW-M0g" firstAttribute="leading" secondItem="Pb5-2n-a8C" secondAttribute="leading" id="3SO-En-6HU"/>
+                        <constraint firstAttribute="trailing" secondItem="PhM-cq-ktD" secondAttribute="trailing" constant="12" id="LOw-8A-N9d"/>
+                        <constraint firstItem="EkQ-nW-M0g" firstAttribute="trailing" secondItem="Pb5-2n-a8C" secondAttribute="trailing" id="N1q-F5-K5q"/>
+                        <constraint firstAttribute="trailing" secondItem="Pb5-2n-a8C" secondAttribute="trailing" constant="12" id="Qzz-SJ-hoW"/>
+                        <constraint firstItem="Pb5-2n-a8C" firstAttribute="top" secondItem="PhM-cq-ktD" secondAttribute="bottom" constant="42" id="UXq-ee-sZk"/>
+                        <constraint firstItem="PhM-cq-ktD" firstAttribute="top" secondItem="19A-WT-AUI" secondAttribute="top" constant="42" id="YGz-xy-ArF"/>
+                        <constraint firstItem="PhM-cq-ktD" firstAttribute="leading" secondItem="19A-WT-AUI" secondAttribute="leading" constant="12" id="YhH-RC-RXl"/>
+                        <constraint firstItem="EkQ-nW-M0g" firstAttribute="top" secondItem="Pb5-2n-a8C" secondAttribute="bottom" constant="24" id="ZdZ-SR-s3U"/>
+                        <constraint firstItem="Pb5-2n-a8C" firstAttribute="leading" secondItem="19A-WT-AUI" secondAttribute="leading" constant="12" id="cHx-dN-l6l"/>
+                        <constraint firstItem="PhM-cq-ktD" firstAttribute="height" secondItem="19A-WT-AUI" secondAttribute="height" multiplier="0.3" id="zS9-Wo-mel"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="KMT-DA-xBC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UUy-HF-Utf"/>
                 <constraint firstItem="KMT-DA-xBC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="V09-gs-jDP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="19A-WT-AUI" secondAttribute="trailing" id="Wt9-YN-CgP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="19A-WT-AUI" secondAttribute="bottom" id="Xgw-Ks-awu"/>
+                <constraint firstItem="19A-WT-AUI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cXG-Zh-lnG"/>
                 <constraint firstAttribute="bottom" secondItem="KMT-DA-xBC" secondAttribute="bottom" id="r4b-fw-VeZ"/>
+                <constraint firstItem="19A-WT-AUI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="t3G-Pv-DYP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KMT-DA-xBC" secondAttribute="trailing" id="zQ1-3h-hEl"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>

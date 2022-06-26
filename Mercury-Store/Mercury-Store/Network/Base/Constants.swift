@@ -20,19 +20,30 @@ struct Constants {
             public static let mainCategoryList = "/custom_collections.json"
         }
         struct Customers {
-            public static let customersList = "/smart_collections.json"
+            public static let customer = "/customers.json"
+            public static let customerSearch = "/customers/search.json"
+            public static let customerOrders = "/customers"
         }
-      
+        struct Order{
+            public static let postDraftOrder = "/draft_orders.json"
+            public static let modifyExistingOrder = "/draft_orders"
+            public static let postOrder = "/orders.json"
+        }
+        struct PricesRule{
+            public static let pricesRules = "/price_rules.json"
+            public static func getCoupon(id:Int)->String{
+                return "price_rules/\(id).json"
+            }
+        }
     }
     
         
     
     struct Keys {
-        public static let apiKey = "c48655414af1ada2cd256a6b5ee391be"
-        public static let password = "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"
-        public static let storeName = "mobile-ismailia"
+        public static let apiKey = "54e7ce1d28a9d3b395830ea17be70ae1"
+        public static let password = "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"
+        public static let storeName = "mad-ism2022"
         public static let apiVersion = "2022-04"
-        
     }
 }
 

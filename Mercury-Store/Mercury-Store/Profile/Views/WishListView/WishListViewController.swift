@@ -10,20 +10,41 @@ import RxSwift
 
 class WishListViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    //
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyImageView: UIImageView!
+    
+    @IBOutlet weak var emptyView: UIView!
+    
+    // MARK: - Properties
+    //
     let viewModel:WishListViewModelType = WishListViewModel()
     let disposeBag = DisposeBag()
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Life cycle
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "WishListCell", bundle: nil), forCellReuseIdentifier: WishListCell.identifier)
         tableDataSource()
+        emptyView.isHidden = true
+        bindEmptyView()
     }
-   
+    
+    private func bindEmptyView() {
+        let emptyCartGif = UIImage.gifImageWithName("emptyWishlist")
+        emptyImageView.image = emptyCartGif
+        self.viewModel.emptyView
+            .drive(emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
+    }
 
 }
+// MARK: - Extensions
 extension WishListViewController : UITableViewDelegate{
-    
+    // MARK: - Private handlers
+    //
     func tableDataSource(){
         viewModel.getFavouriteItems()
         viewModel.products.drive(tableView.rx.items(cellIdentifier: WishListCell.identifier , cellType: WishListCell.self)){ index , element , cell in

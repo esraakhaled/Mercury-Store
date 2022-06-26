@@ -21,16 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kKN-H1-iAM">
-                    <rect key="frame" x="95.5" y="108" width="310.5" height="754"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="1" id="WrM-ut-rj8">
-                        <size key="itemSize" width="150" height="180"/>
+                    <rect key="frame" x="116" y="68" width="290" height="794"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="2" minimumInteritemSpacing="1" sectionInsetReference="layoutMargins" id="WrM-ut-rj8">
+                        <size key="itemSize" width="120" height="120"/>
                         <size key="headerReferenceSize" width="4" height="12"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="4" minY="10" maxX="4" maxY="10"/>
+                        <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWh-Xo-OvW">
-                    <rect key="frame" x="8" y="108" width="83" height="754"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWh-Xo-OvW">
+                    <rect key="frame" x="8" y="68" width="124" height="794"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
@@ -39,11 +39,11 @@
             <constraints>
                 <constraint firstItem="yWh-Xo-OvW" firstAttribute="leading" secondItem="5aK-I4-mHF" secondAttribute="leading" constant="8" id="O9N-yz-f7d"/>
                 <constraint firstItem="jwd-cu-XDQ" firstAttribute="trailing" secondItem="kKN-H1-iAM" secondAttribute="trailing" constant="8" id="P0Y-Iw-PCz"/>
-                <constraint firstItem="kKN-H1-iAM" firstAttribute="top" secondItem="jwd-cu-XDQ" secondAttribute="top" constant="64" id="VbF-ci-m2O"/>
-                <constraint firstItem="yWh-Xo-OvW" firstAttribute="top" secondItem="jwd-cu-XDQ" secondAttribute="top" constant="64" id="dw6-Kd-inI"/>
-                <constraint firstItem="kKN-H1-iAM" firstAttribute="width" secondItem="5aK-I4-mHF" secondAttribute="width" multiplier="3:4" id="hvU-HZ-dMp"/>
+                <constraint firstItem="kKN-H1-iAM" firstAttribute="top" secondItem="jwd-cu-XDQ" secondAttribute="top" constant="24" id="VbF-ci-m2O"/>
+                <constraint firstItem="yWh-Xo-OvW" firstAttribute="top" secondItem="jwd-cu-XDQ" secondAttribute="top" constant="24" id="dw6-Kd-inI"/>
+                <constraint firstItem="kKN-H1-iAM" firstAttribute="width" secondItem="5aK-I4-mHF" secondAttribute="width" multiplier="7:10" id="hvU-HZ-dMp"/>
                 <constraint firstItem="jwd-cu-XDQ" firstAttribute="bottom" secondItem="kKN-H1-iAM" secondAttribute="bottom" id="j6i-oD-laz"/>
-                <constraint firstItem="yWh-Xo-OvW" firstAttribute="width" secondItem="5aK-I4-mHF" secondAttribute="width" multiplier="1:5" id="kRy-fR-HrH"/>
+                <constraint firstItem="yWh-Xo-OvW" firstAttribute="width" secondItem="5aK-I4-mHF" secondAttribute="width" multiplier="3:10" id="kRy-fR-HrH"/>
                 <constraint firstItem="jwd-cu-XDQ" firstAttribute="bottom" secondItem="yWh-Xo-OvW" secondAttribute="bottom" id="sJB-Zx-Imr"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>

@@ -29,14 +29,14 @@ extension UITableView {
     }
 }
 
-extension Reactive where Base: UITableView {
+extension Reactive where Base: UIView {
     
-    func isEmpty(message: String) -> Binder<Bool> {
+    func isEmpty() -> Binder<Bool> {
         return Binder(base) { tableView, isEmpty in
             if isEmpty {
-                tableView.setEmptyState(message: message)
+                tableView.isHidden = false
             } else {
-                tableView.removeEmptyState()
+                tableView.isHidden = true
             }
         }
     }

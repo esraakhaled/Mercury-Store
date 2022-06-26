@@ -9,15 +9,25 @@ import UIKit
 import RxSwift
 
 class BrandsTableViewCell: UITableViewCell {
-    
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var containerViewForBrandsCollectionView: UIView!
-    
     @IBOutlet weak private var brandsCollectionView: UICollectionView! {
         didSet {
             brandsCollectionView.register(UINib(nibName: BrandsCollectionViewCell.reuseIdentifier(), bundle: nil), forCellWithReuseIdentifier: BrandsCollectionViewCell.reuseIdentifier())
         }
     }
     
+    // MARK: - Properties
+    //
+    private let disposeBag = DisposeBag()
+    var viewModel: BrandsViewModel! {
+        didSet {
+            self.configure()
+        }
+    }
+    // MARK: - Life cycle
+    //
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
@@ -35,16 +45,12 @@ class BrandsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    private let disposeBag = DisposeBag()
     
-    var viewModel: BrandsViewModel! {
-        didSet {
-            self.configure()
-        }
-    }    
 }
-
+// MARK: - Extensions
 extension BrandsTableViewCell {
+    // MARK: - Private handlers
+    //
     private func bindCollectionView() {
         brandsCollectionView.dataSource = nil
         brandsCollectionView.delegate = nil
@@ -63,7 +69,7 @@ extension BrandsTableViewCell {
         }).disposed(by: disposeBag)
     }
 }
-
+// MARK: - Extensions
 extension BrandsTableViewCell {
     private func configure() {
         self.bindCollectionView()

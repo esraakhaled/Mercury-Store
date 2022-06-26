@@ -3,12 +3,15 @@
     <entity name="ProductsCoreData" representedClassName="ProductsCoreData" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Decimal" defaultValueString="0"/>
         <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="inventoryQuantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="userIds" optional="YES" attributeType="Transformable"/>
+        <attribute name="variantId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="ProductsCoreData" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="ProductsCoreData" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

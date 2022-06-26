@@ -18,14 +18,35 @@ target 'Mercury-Store' do
   #Image download
   pod 'SDWebImage', '5.12.5'
 
+  #Toast_Swift
+  pod 'Toast-Swift', '~> 5.0.1'
+  
+  #Cosmos
+  pod 'Cosmos', '~> 23.0'
 
- #pods for textfield effects
- pod 'TextFieldEffects'
 
+  # Includes Cards and PayPal
+  pod 'Braintree'
+  pod 'BraintreeDropIn'
+  # Optionally include additional Pods
+  pod 'Braintree/DataCollector'
+  pod 'Braintree/Venmo'
+
+  #ProgressHud
+  pod 'ProgressHUD'
+  #DropDown
+  pod 'DropDown'
+  
+  #Reachability
+  pod 'ReachabilitySwift'
+
+ 
  #ProgressHud
  pod 'ProgressHUD'
+ 
+ #lottieFiles
+ pod 'lottie-ios'
   
-
   target 'Mercury-StoreTests' do
     inherit! :search_paths
     # Pods for testing

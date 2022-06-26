@@ -8,30 +8,38 @@
 import UIKit
 
 class MainCategoryCellTableViewCell: UITableViewCell {
-    static let identifier = "MainCategoryCellTableViewCell"
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak var cellContainerView: UIView!
     @IBOutlet weak var categoryItem: UILabel!
+    // MARK: - Properties
+    //
+    static let identifier = "MainCategoryCellTableViewCell"
     var item:CustomCollection?
     var cellClickAction:( (_ item:CustomCollection)->() )?
+    // MARK: - Life cycle
+    //
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupCell()
     }
-
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        designSelected(selected: selected)
+    }
+    
+    func designSelected(selected:Bool){
+        if selected {
+            self.categoryItem.textColor = .white
+            self.cellContainerView.backgroundColor = ColorsPalette.lightColor
+        }
+        else{
+            self.categoryItem.textColor = .black
+            self.cellContainerView.backgroundColor = .white
+        }
+    }
+    // MARK: - Private handlers
+    //
     public func config(item:CustomCollection){
         self.item = item
         categoryItem.text = item.title
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        //cellContainerView.addGestureRecognizer(tap)
-    }
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        guard let cellClickAction = cellClickAction else {
-            return
-        }
-       // cellContainerView.backgroundColor = .blue
-       // cellClickAction(self.item!)
-    }
-    private func setupCell() {
-        cellContainerView.applyShadow(cornerRadius: 12)
     }
 }

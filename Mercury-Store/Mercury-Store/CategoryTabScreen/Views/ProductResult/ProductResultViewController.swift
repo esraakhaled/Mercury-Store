@@ -10,12 +10,17 @@ import RxSwift
 import ProgressHUD
 
 class ProductResultViewController: UIViewController {
-
+    // MARK: - IBOutlets
+    //
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var productCollectionView: UICollectionView!
-    
+    // MARK: - Properties
+    //
     private let disposeBag = DisposeBag()
     private var viewModel:FilteredProductsViewModelType?
-    
+    let connection = NetworkReachability.shared
+    // MARK: - Set up
+    //
     init(with viewModel: FilteredProductsViewModelType) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
@@ -30,21 +35,38 @@ class ProductResultViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         bindActivity()
-        
+        createSearchBarButton()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        connection.checkNetwork(target: self)
     }
     
+    private func createSearchBarButton() {
+        let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchBtnTapped))
+        self.navigationItem.rightBarButtonItem = search
+    }
+    
+    @objc func searchBtnTapped() {
+        viewModel?.goToSearchScreen()
+    }
+    
+    // MARK: - Private handlers
+    //
     private func setupCollectionView(){
-        let nib = UINib(nibName: "ProductCell", bundle: nil)
-        productCollectionView.register(nib, forCellWithReuseIdentifier: ProductCell.identifier)
+        productCollectionView.delegate = nil
+        productCollectionView.dataSource = nil
+        productCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        let nib = UINib(nibName: BrandProductsCollectionViewCell.reuseIdentifier(), bundle: nil)
+        productCollectionView.register(nib, forCellWithReuseIdentifier: BrandProductsCollectionViewCell.reuseIdentifier())
         
-        viewModel?.products.drive(productCollectionView.rx.items(cellIdentifier: ProductCell.identifier, cellType: ProductCell.self)){[weak self] index , element , cell in
-            guard let `self` = self else {fatalError()}
-            cell.cellClickAction =  { (item) in
-                self.viewModel?.goToProductDetail(with: item)
-            }
-            cell.configure(item: element)
+        viewModel?.products.drive(productCollectionView.rx.items(cellIdentifier: BrandProductsCollectionViewCell.reuseIdentifier(), cellType: BrandProductsCollectionViewCell.self)){index , element , cell in
+            cell.item = element
         }.disposed(by: disposeBag)
-        productCollectionView.delegate = self
+        productCollectionView.rx.modelSelected(Product.self).subscribe(onNext:{ type in
+            self.viewModel?.goToProductDetail(with: type)
+        }).disposed(by: disposeBag)
+        
     }
     
     private func bindActivity() {
@@ -57,11 +79,12 @@ class ProductResultViewController: UIViewController {
     }
 
 }
+// MARK: - Extensions
 extension ProductResultViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let padding: CGFloat =  20
         let collectionViewSize = collectionView.frame.size.width - padding
-        return CGSize(width: collectionViewSize/2, height: 200)
+        return CGSize(width: collectionViewSize/2, height: 300)
     }
 }

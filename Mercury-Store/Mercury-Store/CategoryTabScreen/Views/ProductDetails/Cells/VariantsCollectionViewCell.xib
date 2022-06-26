@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VariantsCollectionViewCell" id="gTV-IL-0wX" customClass="VariantsCollectionViewCell" customModule="Mercury_Store" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xU-mN-226">
+                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84H-wr-Luv">
+                                <rect key="frame" x="-7" y="3.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="84H-wr-Luv" firstAttribute="centerY" secondItem="4xU-mN-226" secondAttribute="centerY" id="4Bi-8n-I74"/>
+                            <constraint firstItem="84H-wr-Luv" firstAttribute="centerX" secondItem="4xU-mN-226" secondAttribute="centerX" id="pRZ-O7-x3c"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="4xU-mN-226" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Fpo-B3-TAp"/>
+                <constraint firstItem="4xU-mN-226" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MO6-Qw-p59"/>
+                <constraint firstAttribute="bottom" secondItem="4xU-mN-226" secondAttribute="bottom" id="bEU-YE-cHr"/>
+                <constraint firstAttribute="trailing" secondItem="4xU-mN-226" secondAttribute="trailing" id="qcE-Ng-NWg"/>
+            </constraints>
+            <size key="customSize" width="128" height="55"/>
+            <connections>
+                <outlet property="containerViewForVariantLabel" destination="4xU-mN-226" id="uTf-f6-Ung"/>
+                <outlet property="variantNameLabel" destination="84H-wr-Luv" id="HVW-Dy-I7W"/>
+            </connections>
+            <point key="canvasLocation" x="-44.20289855072464" y="61.941964285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

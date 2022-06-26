@@ -24,8 +24,8 @@
                                 <rect key="frame" x="8" y="8" width="866" height="295"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lYA-5H-gTg">
-                                    <size key="itemSize" width="180" height="180"/>
-                                    <size key="estimatedItemSize" width="180" height="180"/>
+                                    <size key="itemSize" width="160" height="180"/>
+                                    <size key="estimatedItemSize" width="160" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

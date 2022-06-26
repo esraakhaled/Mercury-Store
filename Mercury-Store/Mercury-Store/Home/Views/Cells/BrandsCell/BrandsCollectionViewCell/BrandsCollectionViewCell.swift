@@ -8,13 +8,14 @@
 import UIKit
 
 class BrandsCollectionViewCell: UICollectionViewCell {
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var containerViewForBrandsCollectionViewCell: UIView!
     @IBOutlet weak private var containerViewForBrandImageView: UIView!
-    
     @IBOutlet weak private var brandImageView: UIImageView!
-    
     @IBOutlet weak private var brandNameLabel: UILabel!
-    
+    // MARK: - Properties
+    //
     var brandItem: SmartCollectionElement? {
         didSet {
             guard let brandItem = brandItem else {
@@ -27,7 +28,8 @@ class BrandsCollectionViewCell: UICollectionViewCell {
             brandNameLabel.text = brandItem.title
         }
     }
-
+    // MARK: - Life cycle
+    //
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()

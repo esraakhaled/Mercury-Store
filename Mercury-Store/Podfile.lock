@@ -1,7 +1,44 @@
 PODS:
   - Alamofire (5.6.1)
+  - Braintree (5.10.0):
+    - Braintree/Card (= 5.10.0)
+    - Braintree/Core (= 5.10.0)
+    - Braintree/PayPal (= 5.10.0)
+  - Braintree/ApplePay (5.10.0):
+    - Braintree/Core
+  - Braintree/Card (5.10.0):
+    - Braintree/Core
+  - Braintree/Core (5.10.0)
+  - Braintree/DataCollector (5.10.0):
+    - Braintree/Core
+  - Braintree/PaymentFlow (5.10.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPal (5.10.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.10.0)
+  - Braintree/ThreeDSecure (5.10.0):
+    - Braintree/Card
+    - Braintree/PaymentFlow
+  - Braintree/UnionPay (5.10.0):
+    - Braintree/Card
+  - Braintree/Venmo (5.10.0):
+    - Braintree/Core
+  - BraintreeDropIn (9.6.0):
+    - Braintree/ApplePay (~> 5.9)
+    - Braintree/Card (~> 5.9)
+    - Braintree/Core (~> 5.9)
+    - Braintree/PayPal (~> 5.9)
+    - Braintree/ThreeDSecure (~> 5.9)
+    - Braintree/UnionPay (~> 5.9)
+    - Braintree/Venmo (~> 5.9)
+  - Cosmos (23.0.0)
   - Differentiator (5.0.0)
+  - DropDown (2.3.13)
+  - lottie-ios (3.3.0)
   - ProgressHUD (13.6)
+  - ReachabilitySwift (5.0.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -16,43 +53,63 @@ PODS:
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
   - SwiftLint (0.47.1)
-  - TextFieldEffects (1.6.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (= 5.6.1)
+  - Braintree
+  - Braintree/DataCollector
+  - Braintree/Venmo
+  - BraintreeDropIn
+  - Cosmos (~> 23.0)
+  - DropDown
+  - lottie-ios
   - ProgressHUD
+  - ReachabilitySwift
   - RxCocoa (= 6.5.0)
   - RxDataSources (~> 5.0)
   - RxSwift (= 6.5.0)
   - SDWebImage (= 5.12.5)
   - SwiftLint (= 0.47.1)
-  - TextFieldEffects
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Braintree
+    - BraintreeDropIn
+    - Cosmos
     - Differentiator
+    - DropDown
+    - lottie-ios
     - ProgressHUD
+    - ReachabilitySwift
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
     - SDWebImage
     - SwiftLint
-    - TextFieldEffects
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  Braintree: a4df29b5453664ea01f89a04e0ae97397021c92f
+  BraintreeDropIn: 31882df3fd8d5cb627339c3ecc857e480d8ef7b8
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
-  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: ad7d86d2c0ef6753436e6ccf5dc720e41eda8479
+PODFILE CHECKSUM: de154c8fb8489c6aa1df1ef9736828ba2b055a0f
 
 COCOAPODS: 1.11.3

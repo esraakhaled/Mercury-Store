@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressesCheckViewController" customModule="Mercury_Store" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyView" destination="Rdj-r9-Rj1" id="3vB-W4-uJh"/>
+                <outlet property="imageForEmptyAddress" destination="kLT-ff-HLv" id="5Ec-Y3-rhb"/>
+                <outlet property="tableView" destination="eXf-Q2-Xdu" id="WL6-N5-EMy"/>
+                <outlet property="view" destination="exk-zM-GdY" id="jog-ei-SkU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="exk-zM-GdY">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-Q2-Xdu">
+                    <rect key="frame" x="0.0" y="125.5" width="414" height="736.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your shipping address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WR8-C2-6Ff">
+                    <rect key="frame" x="12" y="56" width="390" height="57.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdj-r9-Rj1">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySearch" translatesAutoresizingMaskIntoConstraints="NO" id="kLT-ff-HLv">
+                            <rect key="frame" x="12" y="42" width="390" height="409"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We couldn't find any address for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbW-9r-5LF">
+                            <rect key="frame" x="12" y="475" width="390" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add one or more addresses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYB-CO-ykt">
+                            <rect key="frame" x="12" y="523" width="390" height="23"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="LbW-9r-5LF" firstAttribute="top" secondItem="kLT-ff-HLv" secondAttribute="bottom" constant="24" id="5uL-0B-BhC"/>
+                        <constraint firstItem="kLT-ff-HLv" firstAttribute="leading" secondItem="Rdj-r9-Rj1" secondAttribute="leading" constant="12" id="9xp-n1-jOR"/>
+                        <constraint firstItem="kLT-ff-HLv" firstAttribute="top" secondItem="Rdj-r9-Rj1" secondAttribute="top" constant="42" id="QhD-fP-qvR"/>
+                        <constraint firstItem="LbW-9r-5LF" firstAttribute="leading" secondItem="Rdj-r9-Rj1" secondAttribute="leading" constant="12" id="WUh-1h-ln8"/>
+                        <constraint firstItem="uYB-CO-ykt" firstAttribute="top" secondItem="LbW-9r-5LF" secondAttribute="bottom" constant="24" id="dPO-ye-S1s"/>
+                        <constraint firstItem="kLT-ff-HLv" firstAttribute="height" secondItem="Rdj-r9-Rj1" secondAttribute="height" multiplier="0.5" id="iAZ-3p-0J6"/>
+                        <constraint firstItem="uYB-CO-ykt" firstAttribute="trailing" secondItem="LbW-9r-5LF" secondAttribute="trailing" id="n6Q-Bd-xtJ"/>
+                        <constraint firstAttribute="trailing" secondItem="kLT-ff-HLv" secondAttribute="trailing" constant="12" id="uDc-Bi-Rpo"/>
+                        <constraint firstItem="uYB-CO-ykt" firstAttribute="leading" secondItem="LbW-9r-5LF" secondAttribute="leading" id="uyB-3l-Pvz"/>
+                        <constraint firstAttribute="trailing" secondItem="LbW-9r-5LF" secondAttribute="trailing" constant="12" id="vzY-Q3-Dzx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="51I-F5-8IX"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Rdj-r9-Rj1" firstAttribute="top" secondItem="51I-F5-8IX" secondAttribute="top" id="0Jd-mW-obf"/>
+                <constraint firstItem="51I-F5-8IX" firstAttribute="bottom" secondItem="eXf-Q2-Xdu" secondAttribute="bottom" id="2Fl-Zp-Mdk"/>
+                <constraint firstItem="eXf-Q2-Xdu" firstAttribute="top" secondItem="WR8-C2-6Ff" secondAttribute="bottom" constant="12" id="93E-HJ-I4g"/>
+                <constraint firstItem="51I-F5-8IX" firstAttribute="trailing" secondItem="WR8-C2-6Ff" secondAttribute="trailing" constant="12" id="9Vq-kI-Rt4"/>
+                <constraint firstItem="51I-F5-8IX" firstAttribute="trailing" secondItem="eXf-Q2-Xdu" secondAttribute="trailing" id="EeJ-BM-qkx"/>
+                <constraint firstItem="WR8-C2-6Ff" firstAttribute="top" secondItem="51I-F5-8IX" secondAttribute="top" constant="12" id="LhC-dF-r0b"/>
+                <constraint firstItem="eXf-Q2-Xdu" firstAttribute="leading" secondItem="51I-F5-8IX" secondAttribute="leading" id="TTG-6U-Bzb"/>
+                <constraint firstItem="Rdj-r9-Rj1" firstAttribute="leading" secondItem="51I-F5-8IX" secondAttribute="leading" id="ezh-6c-iDg"/>
+                <constraint firstItem="51I-F5-8IX" firstAttribute="bottom" secondItem="Rdj-r9-Rj1" secondAttribute="bottom" id="o12-2m-vJT"/>
+                <constraint firstItem="51I-F5-8IX" firstAttribute="trailing" secondItem="Rdj-r9-Rj1" secondAttribute="trailing" id="oW8-mw-UFK"/>
+                <constraint firstItem="WR8-C2-6Ff" firstAttribute="leading" secondItem="51I-F5-8IX" secondAttribute="leading" constant="12" id="xTk-tg-1YP"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="70.982142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="emptySearch" width="1300" height="1300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

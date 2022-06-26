@@ -8,11 +8,14 @@
 import UIKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var containerViewForCategoriesCollectionViewCell: UIView!
     @IBOutlet weak private var categoryImageView: UIImageView!
     @IBOutlet weak private var categoryName: UILabel!
     @IBOutlet weak private var containerViewForCategoryImageView: UIView!
-    
+    // MARK: - Properties
+    //
     var category: CategoryDataItem? {
         didSet {
             guard let category = category else {
@@ -23,8 +26,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             containerViewForCategoryImageView.backgroundColor = UIColor(hexString: category.colorHex)
         }
     }
-    
-    
+    // MARK: - Life cycle
+    //
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()

@@ -9,41 +9,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryItem" id="EQK-ue-B07" customClass="CategoryItem" customModule="Mercury_Store" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Jgh-Sm-SVH">
-                        <rect key="frame" x="12" y="12" width="126" height="156"/>
+                        <rect key="frame" x="12" y="12" width="126" height="126"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-yv-zTl">
-                                <rect key="frame" x="0.0" y="117" width="126" height="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-yv-zTl">
+                                <rect key="frame" x="4" y="94.5" width="118" height="31.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="category">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" metaFont="system" size="18"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="gLo-Sl-pBa">
-                                <rect key="frame" x="0.0" y="0.0" width="126" height="117"/>
+                                <rect key="frame" x="4" y="4" width="118" height="94.5"/>
                                 <color key="tintColor" red="0.55096346650000005" green="0.56842634410000004" blue="0.55908442199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94906181099999998" green="0.94898396730000001" blue="0.96945518259999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gLo-Sl-pBa" secondAttribute="trailing" id="2Z0-IA-ncB"/>
-                            <constraint firstItem="gLo-Sl-pBa" firstAttribute="top" secondItem="Jgh-Sm-SVH" secondAttribute="top" id="Gt3-Ng-5Wv"/>
-                            <constraint firstItem="gLo-Sl-pBa" firstAttribute="leading" secondItem="Jgh-Sm-SVH" secondAttribute="leading" id="MBg-Fn-gXo"/>
-                            <constraint firstItem="bQ3-yv-zTl" firstAttribute="leading" secondItem="Jgh-Sm-SVH" secondAttribute="leading" id="OKu-I9-wvn"/>
+                            <constraint firstAttribute="trailing" secondItem="gLo-Sl-pBa" secondAttribute="trailing" constant="4" id="2Z0-IA-ncB"/>
+                            <constraint firstItem="gLo-Sl-pBa" firstAttribute="top" secondItem="Jgh-Sm-SVH" secondAttribute="top" constant="4" id="Gt3-Ng-5Wv"/>
+                            <constraint firstItem="gLo-Sl-pBa" firstAttribute="leading" secondItem="Jgh-Sm-SVH" secondAttribute="leading" constant="4" id="MBg-Fn-gXo"/>
+                            <constraint firstItem="bQ3-yv-zTl" firstAttribute="leading" secondItem="Jgh-Sm-SVH" secondAttribute="leading" constant="4" id="OKu-I9-wvn"/>
                             <constraint firstItem="bQ3-yv-zTl" firstAttribute="height" secondItem="Jgh-Sm-SVH" secondAttribute="height" multiplier="1:4" id="jrm-cS-pLL"/>
-                            <constraint firstAttribute="trailing" secondItem="bQ3-yv-zTl" secondAttribute="trailing" id="kXJ-3C-Lwg"/>
+                            <constraint firstAttribute="trailing" secondItem="bQ3-yv-zTl" secondAttribute="trailing" constant="4" id="kXJ-3C-Lwg"/>
                             <constraint firstAttribute="bottom" secondItem="bQ3-yv-zTl" secondAttribute="bottom" id="nWu-PC-EOa"/>
                             <constraint firstItem="gLo-Sl-pBa" firstAttribute="height" secondItem="Jgh-Sm-SVH" secondAttribute="height" multiplier="3:4" id="oTh-pI-TEa"/>
                         </constraints>

@@ -10,6 +10,8 @@ import Alamofire
 enum HomeScreenAPIs: URLRequestBuilder {
     case getBrands
     case getProductsForBrand(Int)
+    case getAllProducts
+    case getDraftOrders(Int)
 }
 
 extension HomeScreenAPIs {
@@ -17,8 +19,10 @@ extension HomeScreenAPIs {
         switch self {
         case .getBrands:
             return Constants.Paths.Brands.brandsList
-        case .getProductsForBrand:
+        case .getProductsForBrand, .getAllProducts:
             return Constants.Paths.Products.productList
+        case .getDraftOrders(let id):
+            return "/draft_orders/\(id).json"
         }
     }
 }
@@ -26,7 +30,7 @@ extension HomeScreenAPIs {
 extension HomeScreenAPIs {
     var parameters: Parameters? {
         switch self {
-        case .getBrands:
+        case .getBrands, .getDraftOrders, .getAllProducts:
             return [:]
         case .getProductsForBrand(let id):
             return ["collection_id" : id]
@@ -37,9 +41,7 @@ extension HomeScreenAPIs {
 extension HomeScreenAPIs {
     var method: HTTPMethod {
         switch self {
-        case .getBrands:
-            return HTTPMethod.get
-        case .getProductsForBrand:
+        case .getBrands, .getDraftOrders, .getProductsForBrand, .getAllProducts:
             return HTTPMethod.get
         }
     }

@@ -169,3 +169,5 @@ enum Option2: String, Codable {
 enum WeightUnit: String, Codable {
     case kg = "kg"
 }
+
+extension Variant: Equatable {}

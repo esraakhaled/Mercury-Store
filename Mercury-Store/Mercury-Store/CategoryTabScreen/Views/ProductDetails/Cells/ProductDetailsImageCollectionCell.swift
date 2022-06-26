@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 
 class ProductDetailsImageCollectionCell: UICollectionViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var productImageDetails: UIImageView!
-    
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
-
     var item: ProductImage? {
         didSet {
             guard let item = item else {
@@ -25,6 +25,7 @@ class ProductDetailsImageCollectionCell: UICollectionViewCell {
             productImageDetails.downloadImage(url: url , placeholder: UIImage(named: "placeholder"), imageIndicator: .gray, completion: nil)
         }
     }
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -9,24 +9,53 @@ import RxSwift
 import RxCocoa
 
 protocol BannerViewModelType {
-    var countForPageControll: Observable<Int> { get }
-    var bannerObservable: Driver<[String]> {get}
+    var isLoading: Driver<Bool> { get }
+    var pricesRules: Driver<[PriceRule]> { get}
+    var error: Driver<String?> { get }
+    var countForPageControll: Driver<Int> { get }
 }
 
 final class BannerViewModel: BannerViewModelType {
-    var bannerObservable: Driver<[String]>
+    var isLoading: Driver<Bool>
     
+    var pricesRules: Driver<[PriceRule]>
     
+    var error: Driver<String?>
     
-    var countForPageControll: Observable<Int>
+    var countForPageControll: Driver<Int>
     
-    private var bannersSubject: PublishSubject = PublishSubject<[String]>()
+    private let priceRuleSubject = BehaviorRelay<[PriceRule]>(value: [])
+    private let countForPageControllSubject = BehaviorRelay<Int>(value: 0)
+    private let isLoadingSubject = BehaviorRelay<Bool>(value: false)
+    private let errorSubject = BehaviorRelay<String?>(value: nil)
+    var pricesRuleClient:PricesRulesProvider = PricesRulesApi()
+    let disposeBag = DisposeBag()
     
     init() {
-        bannerObservable = Driver.just(BannerItemsConst.bannersArray)
-        countForPageControll = Observable.just(BannerItemsConst.bannersArray.count)
+        pricesRules = priceRuleSubject.asDriver(onErrorJustReturn: [])
+        countForPageControll = countForPageControllSubject.asDriver(onErrorJustReturn: 0)
+        isLoading = isLoadingSubject.asDriver(onErrorJustReturn: false)
+        error = errorSubject.asDriver(onErrorJustReturn: "Somthing went wrong")
+        fetchPricesRule()
     }
     
-    
+    private func fetchPricesRule(){
+        pricesRuleClient.getPricesRules()
+            .observe(on: MainScheduler.asyncInstance).subscribe{
+                [weak self] (result) in
+                guard let self = self else{return}
+                self.priceRuleSubject.accept(result.priceRules)
+                self.countForPageControllSubject.accept(result.priceRules.count)
+                self.isLoadingSubject.accept(false)
+                self.errorSubject.accept(nil)
+                } onError: {[weak self] (error) in
+                    guard let self = self else{return}
+                    self.priceRuleSubject.accept([])
+                    self.countForPageControllSubject.accept(0)
+                    self.isLoadingSubject.accept(false)
+                    self.errorSubject.accept("something went wrong")
+                    print(error)
+                }.disposed(by: disposeBag)
+    }
 }
 

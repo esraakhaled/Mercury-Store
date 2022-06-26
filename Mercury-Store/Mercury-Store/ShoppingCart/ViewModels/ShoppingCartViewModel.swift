@@ -8,9 +8,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol ShoppingCartNavigationFlow: AnyObject {
-    
-}
 enum CartAction {
     case increment(SavedProductItem)
     case decrement(SavedProductItem)
@@ -33,21 +30,91 @@ struct CartOutput {
 
 
 final class CartViewModel {
-    private weak var shoppingCartNavigationFlow: ShoppingCartNavigationFlow!
+    private weak var shoppingCartNavigationFlow: ShoppingCartNavigationFlow?
     private let incrementProductSubject = PublishSubject<SavedProductItem>()
     private let decrementProductSubject = PublishSubject<SavedProductItem>()
     private let deleteProductSubject = PublishSubject<SavedProductItem>()
+    private let cartOrderSubject = PublishSubject<DraftOrderResponseTest>()
+    private let editCustomerSubject = PublishSubject<RegisterResponse>()
     var incrementProduct: AnyObserver<SavedProductItem> { incrementProductSubject.asObserver() }
     var decrementProduct: AnyObserver<SavedProductItem> { decrementProductSubject.asObserver() }
     var deleteProduct: AnyObserver<SavedProductItem> { deleteProductSubject.asObserver() }
+    let ordersProvider: OrdersProvider
+    let customerProvider: CustomerProvider
     
+    let disposeBag = DisposeBag()
     
-    init(shoppingCartNavigationFlow: ShoppingCartNavigationFlow) {
+    init(shoppingCartNavigationFlow: ShoppingCartNavigationFlow,
+         ordersProvider: OrdersProvider = OrdersClient(),
+         customerProvider: CustomerProvider = CustomerClient()
+    ) {
         self.shoppingCartNavigationFlow = shoppingCartNavigationFlow
+        self.ordersProvider = ordersProvider
+        self.customerProvider = customerProvider
+    }
+    
+    func modifyOrderInCartApi() {
+        let user = getUserFromUserDefaults()
+        if(user != nil && user!.cartId != 0) {
+            let savedItemsInCart = CartCoreDataManager.shared.getDataFromCoreData()
+            if(!savedItemsInCart.isEmpty) {
+                let putDraftOrder = PutOrderRequest(draftOrder: ModifyDraftOrderRequest(dratOrderId: user!.cartId, lineItems: savedItemsInCart.map { item in
+                    return LineItemDraft(quantity: item.productQTY, variantID: item.variantId, properties: [PropertyDraft(imageName: item.productImage, inventoryQuantity: "\(item.inventoryQuantity)")])
+                }))
+                self.ordersProvider.modifyExistingOrder(with: user!.cartId, and: putDraftOrder)
+                    .subscribe(onNext: {[weak self] result in
+                        guard let `self` = self else {fatalError()}
+                        self.cartOrderSubject.onNext(result)
+                    }).disposed(by: disposeBag)
+            }else {
+                self.ordersProvider.deleteExistingOrder(with: user!.cartId)
+                    .subscribe { _ in
+                        
+                    }.disposed(by: disposeBag)
+                self.modifyCustomerData(draftOrderId: 0)
+            }
+        }
+    }
+    
+    private func modifyCustomerData(draftOrderId: Int) {
+        let user = getUserFromUserDefaults()
+        self.customerProvider.editCustomer(id: user!.id , editCustomer: EditCustomer(customer: EditCustomerItem(id: user!.id, email: user!.email, firstName: user!.username, password: user!.password, cartId: "\(draftOrderId)", favouriteId: "0")))
+            .subscribe(onNext: {[weak self] userResult in
+                guard let `self` = self else {fatalError()}
+                self.editCustomerSubject.onNext(userResult)
+                let newUser = User(id: user!.id , email: user!.email, username: user!.username, isLoggedIn: true, isDiscount: false, password: user!.password, cartId: Int(userResult.customer.cartId) ?? 0 , favouriteId: user!.favouriteId)
+                try! UserDefaults.standard.setObject(newUser, forKey: "user")
+            }).disposed(by: self.disposeBag)
+    }
+    
+    func checkUserExists() -> Bool {
+        let user = getUserFromUserDefaults()
+        if(user != nil) {
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    func goToGuestTab() {
+        shoppingCartNavigationFlow?.goToGuestTab()
+    }
+    
+    func goToAddressesScreen() {
+        shoppingCartNavigationFlow?.goToAddressesScreen()
+    }
+    
+    private func getUserFromUserDefaults() -> User? {
+        do {
+            return try UserDefaults.standard.getObject(forKey: "user", castTo: User.self)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
     func bind(_ input: CartInput) -> CartOutput {
-         let cart = Observable
+        let cart = Observable
             .merge(
                 input.viewLoaded.map{CartAction.viewIsLoaded},
                 incrementProductSubject.map { CartAction.increment($0) },
@@ -60,7 +127,6 @@ final class CartViewModel {
             }
             .map { $0.sections }
             .share()
-        
         return CartOutput(
             cart: cart,
             cartTotal: cart.map(cartTotal()),
@@ -69,7 +135,7 @@ final class CartViewModel {
             checkoutVisible: cart.map(checkoutVisible())
                 .startWith((visible: false, animated: false)))
     }
-        
+    
     func cartTotal() -> (_ cart: [CartSection]) -> String? {
         {  "EGP \($0[safe: 0]?.sectionTotal ?? 0)" }
     }
@@ -86,6 +152,3 @@ final class CartViewModel {
         { $0[safe: 0]?.rows.count == 0 ? (visible: false, animated: true) : (visible: true, animated: true) }
     }
 }
-
-
-

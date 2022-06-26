@@ -9,13 +9,15 @@ import UIKit
 import RxSwift
 
 class CategoriesTableViewCell: UITableViewCell, UIScrollViewDelegate {
-    
+    // MARK: - IBOutlets
+    //
     @IBOutlet weak private var categoriesCollectionView: UICollectionView! {
         didSet {
             categoriesCollectionView.register(UINib(nibName: CategoriesCollectionViewCell.reuseIdentifier(), bundle: nil), forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier())
         }
     }
-    
+    // MARK: - Properties
+    //
     private let disposeBag = DisposeBag()
     
     var viewModel: CategoriesViewModel? {
@@ -23,20 +25,20 @@ class CategoriesTableViewCell: UITableViewCell, UIScrollViewDelegate {
             self.configure()
         }
     }
-    
+    // MARK: - Life cycle
+    //
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
-
+// MARK: - Extensions
 extension CategoriesTableViewCell {
+    // MARK: - Private handlers
+    //
     private func bindCollectionView() {
         categoriesCollectionView.dataSource = nil
         categoriesCollectionView.delegate = nil
@@ -56,7 +58,7 @@ extension CategoriesTableViewCell {
         }).disposed(by: disposeBag)
     }
 }
-
+// MARK: - Extensions
 extension CategoriesTableViewCell {
     private func configure() {
         self.bindCollectionView()

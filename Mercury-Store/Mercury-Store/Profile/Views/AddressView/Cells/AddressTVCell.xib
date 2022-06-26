@@ -3,53 +3,81 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressTVCell" rowHeight="83" id="KGk-i7-Jjw" customClass="AddressTVCell" customModule="Mercury_Store" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="352" height="83"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressTVCell" rowHeight="160" id="KGk-i7-Jjw" customClass="AddressTVCell" customModule="Mercury_Store" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="352" height="83"/>
+                <rect key="frame" x="0.0" y="0.0" width="352" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKG-Dv-OiT">
-                        <rect key="frame" x="16" y="31" width="259" height="21.5"/>
-                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKG-Dv-OiT">
+                        <rect key="frame" x="12" y="12" width="54" height="27.5"/>
+                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="23"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBH-ps-HAw">
+                        <rect key="frame" x="12" y="117" width="54" height="31"/>
+                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfi-gt-Tpk">
-                        <rect key="frame" x="291" y="26" width="45" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="45" id="cRF-ih-FV8"/>
-                        </constraints>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F2-eU-fbb">
+                        <rect key="frame" x="265.5" y="117" width="54.5" height="31"/>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LK6-xD-jOE">
+                        <rect key="frame" x="265.5" y="62.5" width="54.5" height="35"/>
+                        <color key="tintColor" red="0.0" green="0.18823529410000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain">
-                            <imageReference key="image" image="pencil" catalog="system" symbolScale="large"/>
+                            <attributedString key="attributedTitle">
+                                <fragment content="Edit">
+                                    <attributes>
+                                        <color key="NSColor" red="0.13725490196078433" green="0.18431372549019609" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <font key="NSFont" size="18" name="Optima-Bold"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                         </buttonConfiguration>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="bfi-gt-Tpk" secondAttribute="trailing" constant="16" id="0P3-VT-J1A"/>
-                    <constraint firstItem="bfi-gt-Tpk" firstAttribute="centerY" secondItem="HKG-Dv-OiT" secondAttribute="centerY" id="F2w-sJ-xad"/>
-                    <constraint firstItem="HKG-Dv-OiT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="T7p-oT-Ozj"/>
-                    <constraint firstItem="bfi-gt-Tpk" firstAttribute="leading" secondItem="HKG-Dv-OiT" secondAttribute="trailing" constant="16" id="k5F-bz-D3a"/>
-                    <constraint firstItem="HKG-Dv-OiT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kdy-k5-VaF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LK6-xD-jOE" secondAttribute="trailing" constant="12" id="6Hk-e4-Z9g"/>
+                    <constraint firstItem="7F2-eU-fbb" firstAttribute="top" secondItem="CBH-ps-HAw" secondAttribute="top" id="6Sj-bh-wdK"/>
+                    <constraint firstItem="7F2-eU-fbb" firstAttribute="trailing" secondItem="LK6-xD-jOE" secondAttribute="trailing" id="AVl-no-nj6"/>
+                    <constraint firstItem="7F2-eU-fbb" firstAttribute="leading" secondItem="LK6-xD-jOE" secondAttribute="leading" id="BO9-3F-P9p"/>
+                    <constraint firstItem="HKG-Dv-OiT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="LeS-Lv-ATK"/>
+                    <constraint firstItem="HKG-Dv-OiT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="NaA-9f-QHW"/>
+                    <constraint firstItem="CBH-ps-HAw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="bdC-rs-nFE"/>
+                    <constraint firstAttribute="bottom" secondItem="CBH-ps-HAw" secondAttribute="bottom" constant="12" id="cVW-lK-9cW"/>
+                    <constraint firstItem="7F2-eU-fbb" firstAttribute="bottom" secondItem="CBH-ps-HAw" secondAttribute="bottom" id="cxF-jj-85x"/>
+                    <constraint firstItem="LK6-xD-jOE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gT3-Md-woo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="HKG-Dv-OiT" id="mZ8-GT-klj"/>
+                <outlet property="cityLabel" destination="CBH-ps-HAw" id="Cpj-zZ-Bdn"/>
+                <outlet property="deleteButton" destination="7F2-eU-fbb" id="M8j-fK-iiW"/>
+                <outlet property="editButton" destination="LK6-xD-jOE" id="VrC-ej-1rB"/>
             </connections>
-            <point key="canvasLocation" x="160.86956521739131" y="126.89732142857142"/>
+            <point key="canvasLocation" x="-46.376811594202906" y="120.53571428571428"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

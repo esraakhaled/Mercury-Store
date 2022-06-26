@@ -34,7 +34,8 @@ class NetworkService {
                         let item = try newJSONDecoder().decode(T.self, from: data)
                         observer.onNext(item)
                         observer.onCompleted()
-                    } catch {
+                    } catch (let error){
+                        print(error)
                         observer.onError(APIError.parsingError)
                     }
                 case .failure(let error):

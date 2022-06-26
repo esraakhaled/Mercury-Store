@@ -37,13 +37,13 @@ struct CartState {
         
     private func increment(_ product: SavedProductItem, in section: CartSection) -> CartSection {
         if let row = section.row(for: product) {
-            if row.products.productQTY == 10 {
+            if row.products.productQTY == product.inventoryQuantity {
                 return section
             }else {
                 var products = row.products
                 products.productQTY += 1
                 let newRow = CartRow(uuid: row.uuid, products: products)
-                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
+                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
                 return section.replacing(newRow)
             }
         } else {
@@ -58,7 +58,7 @@ struct CartState {
             } else {
                 var products = row.products
                 products.productQTY -= 1
-                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
+                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
                 let newRow = CartRow(uuid: row.uuid, products: products)
                 return section.replacing(newRow)
             }

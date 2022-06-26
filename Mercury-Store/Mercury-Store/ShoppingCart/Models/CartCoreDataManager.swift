@@ -18,24 +18,27 @@ class CartCoreDataManager {
     func getDataFromCoreData() -> [SavedProductItem] {
         let items = self.coreDataModel.getItems(productState: productStates.cart)
         if(items.1 == nil) {
-            
             return items.0
         }else {
-            print(items.1?.localizedDescription)
+            print(items.1!.localizedDescription)
         }
         return items.0
     }
     
     func saveNewCartItem(with item: SavedProductItem) {
-        coreDataModel.insert(item: item)
+        let _ = coreDataModel.insert(item: item)
     }
     
     func updateExistingItem(with item: SavedProductItem) {
-        coreDataModel.update(updateitem: item)
+        let _ = coreDataModel.update(updateitem: item)
     }
     
     func deleteItem(with item: SavedProductItem) {
-        coreDataModel.delete(updateitem: item)
+        let _ = coreDataModel.deleteCartItem(productID: Int(truncating: NSDecimalNumber(decimal: item.productID)) )
+    }
+    
+    func deleteAll() {
+        coreDataModel.deleteAllWithState(productState: productStates.cart)
     }
 }
 

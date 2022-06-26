@@ -10,10 +10,10 @@ import UIKit
 extension UIButton{
     func favouriteState(state:Bool){
         if(state){
-            self.imageView?.image = UIImage(systemName: "heart.fill")!
-            self.imageView?.tintColor = .red
+            setImage(UIImage(systemName:"heart.fill"), for: .normal)
+            tintColor = .red
         }else {
-            self.imageView?.image = UIImage(systemName: "heart")
+            setImage(UIImage(systemName:"heart"), for: .normal)
         }
     }
 }
