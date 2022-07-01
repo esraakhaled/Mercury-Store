@@ -186,7 +186,8 @@ struct OrdersInfoLineItem: Codable {
     let title, totalDiscount: String
     let variantID: Int
     let variantInventoryManagement, variantTitle: String
-
+    let properties: [PropertyDraft]
+    
     enum CodingKeys: String, CodingKey {
         case id
         case adminGraphqlAPIID = "admin_graphql_api_id"
@@ -203,5 +204,6 @@ struct OrdersInfoLineItem: Codable {
         case variantID = "variant_id"
         case variantInventoryManagement = "variant_inventory_management"
         case variantTitle = "variant_title"
+        case properties
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderItemsTableViewCell" rowHeight="93" id="KGk-i7-Jjw" customClass="OrderItemsTableViewCell" customModule="Mercury_Store" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EIV-Vy-4Gi">
+                        <rect key="frame" x="12" y="8" width="99.5" height="77"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNz-Z3-YKO">
+                        <rect key="frame" x="131.5" y="8" width="42.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASV-tj-tzC">
+                        <rect key="frame" x="131.5" y="63.5" width="42.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1Y-ZI-7qh">
+                        <rect key="frame" x="274.5" y="66" width="37.5" height="19"/>
+                        <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="h1Y-ZI-7qh" firstAttribute="bottom" secondItem="ASV-tj-tzC" secondAttribute="bottom" id="4f6-Hd-fjb"/>
+                    <constraint firstAttribute="bottom" secondItem="EIV-Vy-4Gi" secondAttribute="bottom" constant="8" id="CjS-9l-iu2"/>
+                    <constraint firstItem="ASV-tj-tzC" firstAttribute="bottom" secondItem="EIV-Vy-4Gi" secondAttribute="bottom" id="Lmh-TB-gtC"/>
+                    <constraint firstItem="EIV-Vy-4Gi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Q5j-OF-57r"/>
+                    <constraint firstItem="EIV-Vy-4Gi" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.3" id="XIQ-wb-jnP"/>
+                    <constraint firstItem="EIV-Vy-4Gi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Xo2-tX-iWK"/>
+                    <constraint firstItem="nNz-Z3-YKO" firstAttribute="top" secondItem="EIV-Vy-4Gi" secondAttribute="top" id="dYr-UR-bYE"/>
+                    <constraint firstItem="ASV-tj-tzC" firstAttribute="leading" secondItem="nNz-Z3-YKO" secondAttribute="leading" id="gwI-bD-Mhy"/>
+                    <constraint firstAttribute="trailing" secondItem="h1Y-ZI-7qh" secondAttribute="trailing" constant="20" id="scn-Eo-Mm8"/>
+                    <constraint firstItem="nNz-Z3-YKO" firstAttribute="leading" secondItem="EIV-Vy-4Gi" secondAttribute="trailing" constant="20" id="xhh-kR-wpa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="orderItemImageView" destination="EIV-Vy-4Gi" id="aFz-uT-dXG"/>
+                <outlet property="orderItemPrice" destination="ASV-tj-tzC" id="S8V-V6-Aaf"/>
+                <outlet property="orderItemQuantity" destination="h1Y-ZI-7qh" id="Hvc-Ef-7N7"/>
+                <outlet property="orderItemTitleLabel" destination="nNz-Z3-YKO" id="83V-Y3-ak7"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="65.959821428571431"/>
+        </tableViewCell>
+    </objects>
+</document>

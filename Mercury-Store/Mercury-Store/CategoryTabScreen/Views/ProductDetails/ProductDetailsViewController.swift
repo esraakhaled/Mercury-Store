@@ -71,6 +71,9 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate{
         collectionViewFrame.onNext(self.productImagesCollectionView.frame)
         addObserverOnHeight()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     private func addObserverOnHeight() {
         contentSizeObservation = variantsCollectionView.observe(\.contentSize, options: .new, changeHandler: { [weak self] (cv, _) in
             guard let self = self else { return }
@@ -101,7 +104,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate{
     private func updateUi(){
         productTitleLabel.text = viewModel.product.title
         viewModel.priceObservable.subscribe (onNext: {[weak self] value in
-            self?.productPriceLabel.text = "EGP \(value)"
+            self?.productPriceLabel.text = CurrencyHelper().checkCurrentCurrency(value)
         }).disposed(by: disposeBag)
         
         productDescription.text = viewModel.product.bodyHTML
@@ -238,15 +241,21 @@ extension ProductDetailsViewController{
     
     func addToFavourite(){
         favoriteBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self!.view.makeToast("Added to Favorites", duration: 3.0, position: .top)
             guard let self = self else {return}
             self.handleFavouriteAction()
         }).disposed(by: disposeBag)
     }
     
-    func handleFavouriteAction(){
+    func handleFavouriteAction() {
         if viewModel.isLogged {
-            self.favoriteBtn.favouriteState(state:  self.viewModel.toggleFavourite() )
+            if self.viewModel.toggleFavourite() {
+                self.view.makeToast("Added to Favorites", duration: 3.0, position: .top)
+                self.favoriteBtn.favouriteState(state:  true)
+            }else{
+                self.view.makeToast("Deleted from Favorites", duration: 3.0, position: .top)
+                self.favoriteBtn.favouriteState(state:  false )
+            }
+            try! self.viewModel.modifyOrderInWishIfFavIdIsNil(self.viewModel.product, variant: self.viewModel.product.variants[self.viewModel.indexSubject.value()])
         }else{
             showNotLogedDialog()
         }

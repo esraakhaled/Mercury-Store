@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0iX-Bf-VgL">
-                    <rect key="frame" x="0.0" y="52" width="414" height="810"/>
+                    <rect key="frame" x="0.0" y="29" width="414" height="833"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMX-Wl-sAe">
@@ -62,12 +62,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="dMX-Wl-sAe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Q1-My-P0X"/>
-                <constraint firstItem="0iX-Bf-VgL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="RJW-Lj-N1q"/>
-                <constraint firstItem="0iX-Bf-VgL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TXI-cR-U1P"/>
-                <constraint firstItem="0iX-Bf-VgL" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Wwo-Tf-MkA"/>
+                <constraint firstItem="0iX-Bf-VgL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="47S-Eq-1jd"/>
+                <constraint firstItem="0iX-Bf-VgL" firstAttribute="trailing" secondItem="dMX-Wl-sAe" secondAttribute="trailing" id="QwE-TU-wSF"/>
+                <constraint firstItem="0iX-Bf-VgL" firstAttribute="leading" secondItem="dMX-Wl-sAe" secondAttribute="leading" id="XQW-4c-1Qb"/>
+                <constraint firstItem="0iX-Bf-VgL" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="YCo-5R-842"/>
                 <constraint firstAttribute="bottom" secondItem="dMX-Wl-sAe" secondAttribute="bottom" id="Ynp-JU-Qhu"/>
                 <constraint firstAttribute="trailing" secondItem="dMX-Wl-sAe" secondAttribute="trailing" id="dBk-CY-Ruw"/>
-                <constraint firstItem="0iX-Bf-VgL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pZf-Z9-DjX"/>
                 <constraint firstItem="dMX-Wl-sAe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sLL-4Z-pz4"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>

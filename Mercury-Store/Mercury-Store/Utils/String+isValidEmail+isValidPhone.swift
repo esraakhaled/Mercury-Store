@@ -15,3 +15,11 @@ extension String {
     }
     
 }
+extension String {
+    
+    func isValidPhone() -> Bool {
+        let phoneRegex = "^(\01|01|00201)[0-2,5]{1}[0-9]{8}"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", phoneRegex)
+        return predicate.evaluate(with: self)
+    }
+}

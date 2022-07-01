@@ -32,7 +32,9 @@ class ProfileViewModel {
             .myAccountSection(title: "My Account", items: [
                 .myAccountItem(image: UIImage(systemName: "bag")! , title: "My Orders"),
                 .myAccountItem(image:  UIImage(systemName: "heart")!, title: "My WishList"),
-                .myAccountItem(image:  UIImage(systemName: "homekit")!, title: "My Addresses")
+                .myAccountItem(image:  UIImage(systemName: "homekit")!, title: "My Addresses"),
+                .currencyItem
+                
             ]),
             .aboutSection(title: "About", items: [
                 .aboutItem(image:  UIImage(systemName: "info.circle")!, title: "About Us")

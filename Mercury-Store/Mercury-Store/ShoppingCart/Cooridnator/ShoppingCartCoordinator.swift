@@ -19,7 +19,7 @@ class ShoppingCartCoordinator: Coordinator{
         let cartViewModel = CartViewModel(shoppingCartNavigationFlow: self)
         
         let cartVC = ShoppingCartViewController(with: cartViewModel)
-        
+        navigationController.setNavigationBarHidden(true, animated: false)
         navigationController.pushViewController(cartVC, animated: true)
     }
     
@@ -29,6 +29,10 @@ class ShoppingCartCoordinator: Coordinator{
 }
 
 extension ShoppingCartCoordinator: ShoppingCartNavigationFlow {
+    func viewWillAppear() {
+        navigationController.setNavigationBarHidden(true, animated: false)
+    }
+    
     func popToRoot() {
         navigationController.popToRootViewController(animated: true)
     }
@@ -37,6 +41,7 @@ extension ShoppingCartCoordinator: ShoppingCartNavigationFlow {
     func goToAddressesScreen() {
         let addressViewModel: AddressViewModelType = AddressViewModel(addressNavigationFlow: self, cartNavigationFlow: self)
         let addressesCheckVC = AddressesCheckViewController(with: addressViewModel)
+        navigationController.setNavigationBarHidden(false, animated: false)
         navigationController.pushViewController(addressesCheckVC, animated: true)
     }
     

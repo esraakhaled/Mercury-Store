@@ -37,7 +37,6 @@ class BrandsCollectionViewCell: UICollectionViewCell {
     
     private func setupCell() {
         containerViewForBrandsCollectionViewCell.applyShadow(cornerRadius: 12)
-        containerViewForBrandImageView.applyShadow(cornerRadius: 8)
     }
 
 }

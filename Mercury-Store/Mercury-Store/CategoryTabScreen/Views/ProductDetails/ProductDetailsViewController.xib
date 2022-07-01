@@ -216,7 +216,7 @@
                                 <constraint firstItem="C7z-Wi-AIl" firstAttribute="trailing" secondItem="sst-kl-peU" secondAttribute="trailing" id="IIE-hc-lX2"/>
                                 <constraint firstAttribute="trailing" secondItem="tbY-cN-hfZ" secondAttribute="trailing" id="N5x-VT-gdz"/>
                                 <constraint firstItem="C7z-Wi-AIl" firstAttribute="top" secondItem="jmX-DB-K9A" secondAttribute="bottom" constant="12" id="Ocl-Al-Qgv"/>
-                                <constraint firstItem="X3I-jl-yeg" firstAttribute="top" secondItem="sst-kl-peU" secondAttribute="bottom" constant="12" id="P5R-aW-qgq"/>
+                                <constraint firstItem="X3I-jl-yeg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sst-kl-peU" secondAttribute="bottom" constant="12" id="P5R-aW-qgq"/>
                                 <constraint firstItem="tbY-cN-hfZ" firstAttribute="top" secondItem="tnd-aH-pcy" secondAttribute="top" id="QBf-Xw-yiN"/>
                                 <constraint firstItem="EpU-5I-188" firstAttribute="bottom" secondItem="tbY-cN-hfZ" secondAttribute="bottom" constant="-12" id="QP0-ek-hgh"/>
                                 <constraint firstItem="sst-kl-peU" firstAttribute="trailing" secondItem="6xI-Mk-SoX" secondAttribute="trailing" id="XVf-ym-HX0"/>
@@ -310,11 +310,6 @@
             <point key="canvasLocation" x="-1407.2463768115942" y="-1089.5089285714284"/>
         </view>
     </objects>
-    <designables>
-        <designable name="S3U-po-Cq8">
-            <size key="intrinsicContentSize" width="345" height="30"/>
-        </designable>
-    </designables>
     <resources>
         <image name="cart.fill.badge.plus" catalog="system" width="128" height="106"/>
         <image name="heart" catalog="system" width="128" height="109"/>

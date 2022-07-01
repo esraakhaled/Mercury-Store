@@ -42,8 +42,9 @@ struct CartState {
             }else {
                 var products = row.products
                 products.productQTY += 1
+                print("this product state is \(products.producrState)")
                 let newRow = CartRow(uuid: row.uuid, products: products)
-                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
+                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: products.producrState))
                 return section.replacing(newRow)
             }
         } else {
@@ -58,7 +59,8 @@ struct CartState {
             } else {
                 var products = row.products
                 products.productQTY -= 1
-                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: 1))
+                print("this product state is \(products.producrState)")
+                CartCoreDataManager.shared.updateExistingItem(with: SavedProductItem(inventoryQuantity: product.inventoryQuantity, variantId: product.variantId, productID: product.productID, productTitle: product.productTitle, productImage: product.productImage, productPrice: product.productPrice, productQTY: products.productQTY, producrState: products.producrState))
                 let newRow = CartRow(uuid: row.uuid, products: products)
                 return section.replacing(newRow)
             }

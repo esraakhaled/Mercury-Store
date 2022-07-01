@@ -23,7 +23,8 @@ target 'Mercury-Store' do
   
   #Cosmos
   pod 'Cosmos', '~> 23.0'
-
+#keyboard
+pod 'IQKeyboardManagerSwift'
 
   # Includes Cards and PayPal
   pod 'Braintree'

@@ -17,11 +17,11 @@ class DefaultView: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    init(color:UIColor,raduis:CGFloat) {
+    init(color: UIColor, radius: CGFloat) {
         super.init(frame: .zero)
         configure()
         self.backgroundColor    = color
-        self.layer.cornerRadius = raduis
+        self.layer.cornerRadius = radius
     }
     
     private func configure(){
@@ -29,6 +29,5 @@ class DefaultView: UIView {
     }
     
 
-    
     
 }

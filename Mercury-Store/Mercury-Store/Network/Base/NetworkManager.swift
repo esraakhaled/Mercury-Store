@@ -24,7 +24,7 @@ class NetworkReachability {
     
     
     func checkNetwork(target:UIViewController) {
-        let noInternetView  = DefaultView(color: .white, raduis: 0)
+        let noInternetView  = DefaultView(color: .white, radius: 0)
         let noInternetStateImage = DefaultImageView(frame: .zero)
         
         reachability.whenReachable = { reachability in
@@ -34,7 +34,8 @@ class NetworkReachability {
             } else {
                 print("Reachable via Cellular")
             }
-            
+            target.tabBarController?.tabBar.isHidden = false
+            target.navigationController?.setNavigationBarHidden(false, animated: false)
             self.configureRemoveNoInternetView(view: target.view, noInternetView: noInternetView, noInternetStateImage: noInternetStateImage)
             
         }
@@ -43,13 +44,14 @@ class NetworkReachability {
             alert.addAction(UIAlertAction(title: "Dismiss",style: .default, handler: nil))
             target.present(alert, animated: true, completion: nil)
             
-            
+            target.tabBarController?.tabBar.isHidden = true
+            target.navigationController?.setNavigationBarHidden(true, animated: false)
             self.configureShowNoInternetView(view: target.view, noInternetView: noInternetView, noInternetStateImage: noInternetStateImage)
         }
         
     }
     
-    private func configureShowNoInternetView(view:UIView, noInternetView:DefaultView, noInternetStateImage:DefaultImageView){
+    private func configureShowNoInternetView(view: UIView, noInternetView: DefaultView, noInternetStateImage:DefaultImageView){
         view.addSubview(noInternetView)
         noInternetView.addSubview(noInternetStateImage)
         noInternetStateImage.image       = UIImage(named: "noInternetConnection")

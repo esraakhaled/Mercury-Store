@@ -35,7 +35,6 @@ class NetworkService {
                         observer.onNext(item)
                         observer.onCompleted()
                     } catch (let error){
-                        print(error)
                         observer.onError(APIError.parsingError)
                     }
                 case .failure(let error):

@@ -61,7 +61,7 @@ final class ProductSearchViewModel {
             productListSubject
         )
         .map { searchValue, products in
-            searchValue.isEmpty ? products : products.filter { $0.title.lowercased().contains(searchValue.lowercased()) }
+            searchValue.isEmpty ? products : products.filter { $0.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).contains(searchValue.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) }
         }.map { values in
             if(values.isEmpty) {
                 self.errorSubject.accept(false)

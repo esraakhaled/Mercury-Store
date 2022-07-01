@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrdersDetailsViewController" customModule="Mercury_Store" customModuleProvider="target">
+            <connections>
+                <outlet property="dateLabel" destination="Rtt-6m-hld" id="71p-9o-LO2"/>
+                <outlet property="discountLabel" destination="Cyz-hp-dEq" id="y6K-8w-cuz"/>
+                <outlet property="orderIdLabel" destination="fzH-ga-nvH" id="WK7-nF-Q4p"/>
+                <outlet property="orderItemsTableView" destination="i1k-fS-Aao" id="gDG-zy-yOg"/>
+                <outlet property="paymentStatusLabel" destination="xYi-rI-m4A" id="d0m-Fh-Y1w"/>
+                <outlet property="shippingAddressLabel" destination="5sL-Cv-DMX" id="bjp-AJ-y88"/>
+                <outlet property="totalPriceLabel" destination="43g-JP-ofZ" id="MlW-PS-SD1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dem-ql-RGd">
+                    <rect key="frame" x="12" y="86" width="390" height="26.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order id:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa4-Co-N4c">
+                    <rect key="frame" x="12" y="154.5" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2o-rn-faW">
+                    <rect key="frame" x="12" y="200" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Financial status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-HI-v26">
+                    <rect key="frame" x="12" y="245.5" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJW-2T-gDC">
+                    <rect key="frame" x="12" y="291" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wf4-xD-N77">
+                    <rect key="frame" x="12" y="336.5" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyL-UB-KnG">
+                    <rect key="frame" x="12" y="382" width="136.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzH-ga-nvH">
+                    <rect key="frame" x="172.5" y="154.5" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rtt-6m-hld">
+                    <rect key="frame" x="172.5" y="200" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYi-rI-m4A">
+                    <rect key="frame" x="172.5" y="245.5" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sL-Cv-DMX">
+                    <rect key="frame" x="172.5" y="291" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43g-JP-ofZ">
+                    <rect key="frame" x="172.5" y="336.5" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyz-hp-dEq">
+                    <rect key="frame" x="172.5" y="382" width="229.5" height="21.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="i1k-fS-Aao">
+                    <rect key="frame" x="12" y="462" width="390" height="400"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwf-7C-sib">
+                    <rect key="frame" x="12" y="427.5" width="390" height="26.5"/>
+                    <fontDescription key="fontDescription" name="Optima-Bold" family="Optima" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="WyL-UB-KnG" firstAttribute="trailing" secondItem="Wf4-xD-N77" secondAttribute="trailing" id="0Fu-En-Bje"/>
+                <constraint firstItem="Cyz-hp-dEq" firstAttribute="trailing" secondItem="43g-JP-ofZ" secondAttribute="trailing" id="1OH-vj-w5p"/>
+                <constraint firstItem="Wf4-xD-N77" firstAttribute="leading" secondItem="OJW-2T-gDC" secondAttribute="leading" id="1T6-pQ-VOf"/>
+                <constraint firstItem="fzH-ga-nvH" firstAttribute="leading" secondItem="fa4-Co-N4c" secondAttribute="trailing" constant="24" id="6bY-vQ-3au"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dem-ql-RGd" secondAttribute="trailing" constant="12" id="7E7-I8-93f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="i1k-fS-Aao" secondAttribute="bottom" id="8g7-M9-9bm"/>
+                <constraint firstItem="5sL-Cv-DMX" firstAttribute="top" secondItem="OJW-2T-gDC" secondAttribute="top" id="9Wl-pO-oXT"/>
+                <constraint firstItem="Q2o-rn-faW" firstAttribute="trailing" secondItem="fa4-Co-N4c" secondAttribute="trailing" id="DcK-4W-v1l"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gwf-7C-sib" secondAttribute="trailing" constant="12" id="FTN-jt-QTT"/>
+                <constraint firstItem="Cyz-hp-dEq" firstAttribute="top" secondItem="WyL-UB-KnG" secondAttribute="top" id="JHw-nf-6hn"/>
+                <constraint firstItem="Wf4-xD-N77" firstAttribute="top" secondItem="OJW-2T-gDC" secondAttribute="bottom" constant="24" id="K4e-Eh-ZjD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fzH-ga-nvH" secondAttribute="trailing" constant="12" id="K6u-vT-UnJ"/>
+                <constraint firstItem="FfA-HI-v26" firstAttribute="trailing" secondItem="Q2o-rn-faW" secondAttribute="trailing" id="M7B-7H-uFh"/>
+                <constraint firstItem="Rtt-6m-hld" firstAttribute="trailing" secondItem="fzH-ga-nvH" secondAttribute="trailing" id="MYW-LR-zoh"/>
+                <constraint firstItem="fzH-ga-nvH" firstAttribute="top" secondItem="fa4-Co-N4c" secondAttribute="top" id="Mjf-rm-tSR"/>
+                <constraint firstItem="Rtt-6m-hld" firstAttribute="leading" secondItem="fzH-ga-nvH" secondAttribute="leading" id="Qnf-vf-eHc"/>
+                <constraint firstItem="43g-JP-ofZ" firstAttribute="trailing" secondItem="5sL-Cv-DMX" secondAttribute="trailing" id="Sfs-M4-tRL"/>
+                <constraint firstItem="xYi-rI-m4A" firstAttribute="trailing" secondItem="Rtt-6m-hld" secondAttribute="trailing" id="Th3-Su-ORZ"/>
+                <constraint firstItem="fa4-Co-N4c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="UWS-61-YF1"/>
+                <constraint firstItem="5sL-Cv-DMX" firstAttribute="leading" secondItem="xYi-rI-m4A" secondAttribute="leading" id="VXp-MP-ESw"/>
+                <constraint firstItem="Wf4-xD-N77" firstAttribute="trailing" secondItem="OJW-2T-gDC" secondAttribute="trailing" id="WCE-pz-vSg"/>
+                <constraint firstItem="Gwf-7C-sib" firstAttribute="top" secondItem="WyL-UB-KnG" secondAttribute="bottom" constant="24" id="WGR-7w-bwx"/>
+                <constraint firstItem="5sL-Cv-DMX" firstAttribute="trailing" secondItem="xYi-rI-m4A" secondAttribute="trailing" id="WfZ-aj-LJT"/>
+                <constraint firstItem="Gwf-7C-sib" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="XWi-Kr-jDz"/>
+                <constraint firstItem="OJW-2T-gDC" firstAttribute="trailing" secondItem="FfA-HI-v26" secondAttribute="trailing" id="aBx-JA-a5M"/>
+                <constraint firstItem="i1k-fS-Aao" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="arU-jA-ci1"/>
+                <constraint firstItem="OJW-2T-gDC" firstAttribute="top" secondItem="FfA-HI-v26" secondAttribute="bottom" constant="24" id="b8f-Y5-gDl"/>
+                <constraint firstItem="FfA-HI-v26" firstAttribute="top" secondItem="Q2o-rn-faW" secondAttribute="bottom" constant="24" id="bdU-Di-0e8"/>
+                <constraint firstItem="43g-JP-ofZ" firstAttribute="top" secondItem="Wf4-xD-N77" secondAttribute="top" id="bwR-iS-cEP"/>
+                <constraint firstItem="dem-ql-RGd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="dUM-VQ-dqo"/>
+                <constraint firstItem="i1k-fS-Aao" firstAttribute="top" secondItem="Gwf-7C-sib" secondAttribute="bottom" constant="8" id="fwB-RF-TNA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="i1k-fS-Aao" secondAttribute="trailing" constant="12" id="gPP-0t-Doc"/>
+                <constraint firstItem="WyL-UB-KnG" firstAttribute="top" secondItem="Wf4-xD-N77" secondAttribute="bottom" constant="24" id="izo-6Z-aXQ"/>
+                <constraint firstItem="Q2o-rn-faW" firstAttribute="leading" secondItem="fa4-Co-N4c" secondAttribute="leading" id="keo-BR-klg"/>
+                <constraint firstItem="xYi-rI-m4A" firstAttribute="top" secondItem="FfA-HI-v26" secondAttribute="top" id="krk-8e-bGT"/>
+                <constraint firstItem="43g-JP-ofZ" firstAttribute="leading" secondItem="5sL-Cv-DMX" secondAttribute="leading" id="mYH-e6-91d"/>
+                <constraint firstItem="dem-ql-RGd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="42" id="mYl-v4-l2Y"/>
+                <constraint firstItem="Cyz-hp-dEq" firstAttribute="leading" secondItem="43g-JP-ofZ" secondAttribute="leading" id="qnq-gh-r2w"/>
+                <constraint firstItem="Rtt-6m-hld" firstAttribute="top" secondItem="Q2o-rn-faW" secondAttribute="top" id="sUg-N7-dhr"/>
+                <constraint firstItem="fa4-Co-N4c" firstAttribute="top" secondItem="dem-ql-RGd" secondAttribute="bottom" constant="42" id="spR-xm-I12"/>
+                <constraint firstItem="WyL-UB-KnG" firstAttribute="leading" secondItem="Wf4-xD-N77" secondAttribute="leading" id="uGV-pZ-EQ8"/>
+                <constraint firstItem="xYi-rI-m4A" firstAttribute="leading" secondItem="Rtt-6m-hld" secondAttribute="leading" id="uUE-KH-z27"/>
+                <constraint firstItem="OJW-2T-gDC" firstAttribute="leading" secondItem="FfA-HI-v26" secondAttribute="leading" id="yl4-i6-mb3"/>
+                <constraint firstItem="FfA-HI-v26" firstAttribute="leading" secondItem="Q2o-rn-faW" secondAttribute="leading" id="zJu-H4-MYu"/>
+                <constraint firstItem="Q2o-rn-faW" firstAttribute="top" secondItem="fa4-Co-N4c" secondAttribute="bottom" constant="24" id="zpn-Ga-3wZ"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="49.553571428571423"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

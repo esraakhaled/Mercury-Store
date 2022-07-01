@@ -9,10 +9,10 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-
 class AddressViewController: UIViewController, UIScrollViewDelegate{
     // MARK: - IBOutlets
     //
+    @IBOutlet weak var addAddrLabel: UILabel!
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var tableView: UITableView!{
         didSet {
@@ -38,7 +38,13 @@ class AddressViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
+        createAddBarButtonItem()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         connection.checkNetwork(target: self)
@@ -91,6 +97,7 @@ extension AddressViewController {
             .drive(emptyView.rx.isHidden)
             .disposed(by: disposeBag)
     }
+  
 }
 // MARK: - Extensions
 extension AddressViewController {
@@ -104,7 +111,7 @@ extension AddressViewController {
 // MARK: - Extensions
 extension AddressViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 150
     }
     
 }
@@ -123,4 +130,16 @@ extension AddressViewController {
                      defaultTitle: "OK")
     }
 }
+// MARK: - Extensions
+ extension AddressViewController {
+     // MARK: - Private handlers
+     //
+     private func createAddBarButtonItem() {
+         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnTapped))
+         self.navigationItem.rightBarButtonItem = add
+     }
 
+     @objc func addBtnTapped() {
+         self.viewModel.goToAddAddressScreen()
+     }
+ }

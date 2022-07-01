@@ -60,6 +60,7 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
         viewModel?.fetchData()
         bind()
         bindEmptyViewHidden()
+        setupUI()
         emptyView.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +69,10 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     }
     // MARK: - Private handlers
     //
+    private func setupUI() {
+        minimumPrice.text = CurrencyHelper().checkCurrentCurrency("0")
+        maximumPrice.text = CurrencyHelper().checkCurrentCurrency("300")
+    }
     private func bindEmptyViewHidden() {
         let emptySearchGif = UIImage.gifImageWithName("emptySearch")
         emptyImageView.image = emptySearchGif
@@ -138,7 +143,7 @@ class SearchViewController: UIViewController, UIScrollViewDelegate {
     
     private func bindPrice(){
         viewModel?.value.asDriver()
-            .map { "E£ \($0) " }
+            .map { CurrencyHelper().checkCurrentCurrency("\($0)") }
             .drive(maximumPrice.rx.text)
             .disposed(by: bag)
     }

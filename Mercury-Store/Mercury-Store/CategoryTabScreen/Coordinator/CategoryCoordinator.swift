@@ -52,6 +52,10 @@ extension CategoryCoordinator: FilteredProductsNavigationFlow {
     func goToFilteredProductScreen() {
         
     }
+    
+    func viewWillAppearNavReturn() {
+        navigationController.setNavigationBarHidden(false, animated: false)
+    }
 }
 
 extension CategoryCoordinator: ProductDetailsNavigationFlow {

@@ -9,20 +9,22 @@ import Foundation
 import RxDataSources
 import RxSwift
 import RxCocoa
-//this for sections
+
+
 enum ProfileSectionModel {
     case myAccountSection(title: String, items: [ProfileSectionItem])
     case aboutSection(title: String, items: [ProfileSectionItem])
 }
 enum ProfileSectionItem {
     case myAccountItem(image: UIImage,title: String)
+    case currencyItem
     case aboutItem(image: UIImage,title: String)
 }
 extension ProfileSectionModel: SectionModelType {
     typealias Item = ProfileSectionItem
     
     var items: [ProfileSectionItem] {
-        switch  self {
+        switch self {
         case .myAccountSection(title: _, items: let items):
             return items.map { $0 }
         case .aboutSection(title: _, items: let items):

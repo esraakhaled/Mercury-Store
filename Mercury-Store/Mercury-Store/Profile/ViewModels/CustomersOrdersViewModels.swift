@@ -14,9 +14,17 @@ protocol CustomersOrdersViewModelsType {
     var error: Driver<String?> { get }
     var user: User? { get}
     var orders: Driver<[CustomerOrders]>{get}
+    var empty: Driver<Bool> { get }
 }
 
 class CustomersOrdersViewModels:CustomersOrdersViewModelsType {
+    
+    private let emptyViewSubject = BehaviorRelay<Bool>(value: false)
+    var empty: Driver<Bool>{
+        return emptyViewSubject
+            .asDriver(onErrorJustReturn: true)
+    }
+    
     private let typesSubject = BehaviorRelay<[CustomerOrders]>(value: [])
     private let isLoadingSubject = BehaviorRelay<Bool>(value: false)
     private let errorSubject = BehaviorRelay<String?>(value: nil)
@@ -42,7 +50,7 @@ class CustomersOrdersViewModels:CustomersOrdersViewModelsType {
     }
     private func fetchOrders(){
         self.typesSubject.accept([])
-        self.isLoadingSubject.accept(true)
+        self.isLoadingSubject.accept(false)
         self.errorSubject.accept(nil)
         guard let user = user else {
             return
@@ -51,8 +59,12 @@ class CustomersOrdersViewModels:CustomersOrdersViewModelsType {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe {[weak self] (result) in
                 guard let self = self else{return}
+                if result.orders.count == 0{
+                    self.emptyViewSubject.accept(false)
+                }else{
+                    self.emptyViewSubject.accept(true)
+                }
                 self.isLoadingSubject.accept(false)
-                print(result)
                 self.typesSubject.accept(result.orders)
             } onError: {[weak self] (error) in
                 self?.isLoadingSubject.accept(false)

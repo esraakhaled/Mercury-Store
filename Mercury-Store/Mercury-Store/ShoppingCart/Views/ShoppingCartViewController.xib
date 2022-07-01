@@ -38,8 +38,8 @@
                                     <color key="textColor" red="0.3604836166" green="0.70115709299999995" blue="0.75295150280000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Sub Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVd-EH-Syz">
-                                    <rect key="frame" x="8" y="12" width="120" height="32"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Subtotal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVd-EH-Syz">
+                                    <rect key="frame" x="8" y="12" width="110" height="32"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioa-vz-9sk">
                                     <rect key="frame" x="12" y="114" width="374" height="54"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="filled" title="PROCEED TO CHEEKOUT" cornerStyle="capsule"/>
+                                    <buttonConfiguration key="configuration" style="filled" title="PROCEED TO CHECKOUT" cornerStyle="capsule"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

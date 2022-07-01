@@ -117,7 +117,6 @@ struct OrdersTest: Codable {
     let note: String?
     let email: String
     let taxesIncluded: Bool
-    let currency: String
     let createdAt, updatedAt: Date
     let name: String
     let lineItems: [LineItem]
@@ -129,7 +128,6 @@ struct OrdersTest: Codable {
     enum CodingKeys: String, CodingKey {
         case id, note, email
         case taxesIncluded = "taxes_included"
-        case currency
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case name

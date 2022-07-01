@@ -18,7 +18,4 @@ struct ColorsPalette {
     // MARK: - Darkmode colors
     static let primaryOrange = UIColor(hexString: "#ff9900")
     
-    
-
-    
 }

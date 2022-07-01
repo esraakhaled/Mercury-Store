@@ -14,6 +14,9 @@ class MyOrdersViewCell: UITableViewCell {
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var paid: UILabel!
     @IBOutlet weak var price: UILabel!
+    static func reuseIdentifier() -> String {
+        return "myOrderCell"
+    }
     // MARK: - Life cycle
     //
     override func awakeFromNib() {
@@ -23,7 +26,7 @@ class MyOrdersViewCell: UITableViewCell {
     public func setupCell(order: CustomerOrders){
         viewContainer.bounds = CGRect(x: 8, y: 8, width: self.frame.width-8 , height: self.frame.height-8 )
         createdAt.text = "\(order.name) \(order.createdAt.formatted(.dateTime))"
-        price.text = "Order total price: \(order.totalPrice) \(order.currency)"
+        price.text = "Order total price: \(CurrencyHelper().checkCurrentCurrency("\(order.totalPrice)"))"
         paid.text = "address: \(order.shippingAddress?.city  ?? "") - \(order.shippingAddress?.province ?? "") "
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

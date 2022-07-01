@@ -36,6 +36,7 @@ PODS:
   - Cosmos (23.0.0)
   - Differentiator (5.0.0)
   - DropDown (2.3.13)
+  - IQKeyboardManagerSwift (6.5.10)
   - lottie-ios (3.3.0)
   - ProgressHUD (13.6)
   - ReachabilitySwift (5.0.0)
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - BraintreeDropIn
   - Cosmos (~> 23.0)
   - DropDown
+  - IQKeyboardManagerSwift
   - lottie-ios
   - ProgressHUD
   - ReachabilitySwift
@@ -81,6 +83,7 @@ SPEC REPOS:
     - Cosmos
     - Differentiator
     - DropDown
+    - IQKeyboardManagerSwift
     - lottie-ios
     - ProgressHUD
     - ReachabilitySwift
@@ -99,6 +102,7 @@ SPEC CHECKSUMS:
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
@@ -110,6 +114,6 @@ SPEC CHECKSUMS:
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: de154c8fb8489c6aa1df1ef9736828ba2b055a0f
+PODFILE CHECKSUM: f26df242b216c8f3260cb1c3b09d5f8b200d757c
 
 COCOAPODS: 1.11.3

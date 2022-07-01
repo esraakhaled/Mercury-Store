@@ -52,6 +52,7 @@ class ShoppingCartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         connection.checkNetwork(target: self)
+        self.viewModel.viewWillAppear()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

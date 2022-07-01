@@ -13,7 +13,11 @@ class ProfileViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.register(UINib(nibName: CurrencyTableViewCell.reuseIdentifier(), bundle: nil), forCellReuseIdentifier: CurrencyTableViewCell.reuseIdentifier())
+        }
+    }
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
     
@@ -38,11 +42,15 @@ class ProfileViewController: UIViewController {
         configureTableView()
         configureSectionModel()
         self.loadUserData()
+        tableView.estimatedRowHeight = 80
     }
     private func setUpUI() {
         self.logoutBtn.tintColor = ColorsPalette.lightColor
-      
+        self.tableView.delegate = nil
+        tableView.dataSource = nil
+        tableView.rx.setDelegate(self)
     }
+    
     // MARK: - IBActions
     @IBAction func logoutAction(_ sender: Any) {
         self.viewModel.goToMainTab()
@@ -82,7 +90,7 @@ class ProfileViewController: UIViewController {
             default:
                 break
             }
-           
+            
             
         }).disposed(by: disposeBag)
     }
@@ -96,32 +104,42 @@ extension ProfileViewController {
     
     static func dataSource() -> RxTableViewSectionedReloadDataSource<ProfileSectionModel> {
         return RxTableViewSectionedReloadDataSource<ProfileSectionModel>(
-            configureCell: { dataSource, tableView, indexPath, _ in
-            switch dataSource[indexPath] {
-            case let .myAccountItem(image: image,title: title):
-                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-                     cell.selectionStyle = .none
-                     cell.backgroundColor = .clear
-               // cell.imageView?.tintColor = .label
-                cell.imageView?.tintColor = ColorsPalette.lightColor
-                     cell.textLabel?.text = title
-                     cell.imageView?.image = image
-                     cell.accessoryType = .disclosureIndicator
+            configureCell: { dataSource, tableView, indexPath, item in
+                switch dataSource[indexPath] {
+                case let .myAccountItem(image: image,title: title):
+                    let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+                    cell.selectionStyle = .none
+                    cell.backgroundColor = .clear
+                    cell.imageView?.tintColor = ColorsPalette.lightColor
+                    cell.textLabel?.text = title
+                    cell.imageView?.image = image
+                    cell.accessoryType = .disclosureIndicator
                     return cell
-            case let .aboutItem(image: image,title: title):
-                let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-                cell.selectionStyle = .none
-                cell.backgroundColor = .clear
-                //cell.imageView?.tintColor = .label
-                cell.imageView?.tintColor = ColorsPalette.lightColor
-                cell.textLabel?.text = title
-                cell.imageView?.image = image
-                cell.accessoryType = .disclosureIndicator
-                return cell
-            }
-        }, titleForHeaderInSection: { dataSource, index in
-            let section = dataSource[index]
-            return section.title
-        })
+                case let .aboutItem(image: image,title: title):
+                    let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+                    cell.selectionStyle = .none
+                    cell.backgroundColor = .clear
+                    cell.imageView?.tintColor = ColorsPalette.lightColor
+                    cell.textLabel?.text = title
+                    cell.imageView?.image = image
+                    cell.accessoryType = .disclosureIndicator
+                    return cell
+                case .currencyItem:
+                    guard let currencyCell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.reuseIdentifier(), for: indexPath) as? CurrencyTableViewCell else {
+                        fatalError("Couldn't dequeue logo cell")
+                    }
+                    
+                    return currencyCell
+                }
+            }, titleForHeaderInSection: { dataSource, index in
+                let section = dataSource[index]
+                return section.title
+            })
+    }
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

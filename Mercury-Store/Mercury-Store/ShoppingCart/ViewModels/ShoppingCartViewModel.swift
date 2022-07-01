@@ -36,11 +36,12 @@ final class CartViewModel {
     private let deleteProductSubject = PublishSubject<SavedProductItem>()
     private let cartOrderSubject = PublishSubject<DraftOrderResponseTest>()
     private let editCustomerSubject = PublishSubject<RegisterResponse>()
+    private let ordersProvider: OrdersProvider
+    private let customerProvider: CustomerProvider
     var incrementProduct: AnyObserver<SavedProductItem> { incrementProductSubject.asObserver() }
     var decrementProduct: AnyObserver<SavedProductItem> { decrementProductSubject.asObserver() }
     var deleteProduct: AnyObserver<SavedProductItem> { deleteProductSubject.asObserver() }
-    let ordersProvider: OrdersProvider
-    let customerProvider: CustomerProvider
+
     
     let disposeBag = DisposeBag()
     
@@ -52,7 +53,9 @@ final class CartViewModel {
         self.ordersProvider = ordersProvider
         self.customerProvider = customerProvider
     }
-    
+    func viewWillAppear() {
+        shoppingCartNavigationFlow?.viewWillAppear()
+    }
     func modifyOrderInCartApi() {
         let user = getUserFromUserDefaults()
         if(user != nil && user!.cartId != 0) {
@@ -137,7 +140,7 @@ final class CartViewModel {
     }
     
     func cartTotal() -> (_ cart: [CartSection]) -> String? {
-        {  "EGP \($0[safe: 0]?.sectionTotal ?? 0)" }
+        { CurrencyHelper().checkCurrentCurrency("\($0[safe: 0]?.sectionTotal ?? 0)") }
     }
     
     func cartTotalCount() -> (_ cart: [CartSection]) -> String? {

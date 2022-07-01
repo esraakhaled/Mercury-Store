@@ -51,6 +51,7 @@ class PaymentViewViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.fetchCouponData()
         connection.checkNetwork(target: self)
     }
     
@@ -65,6 +66,11 @@ class PaymentViewViewController: UIViewController {
         }
         self.viewModel.CouponError
             .asObservable().map{$0}.bind(to: couponError.rx.text).disposed(by: disposeBag)
+        self.viewModel.orderComplete.asObservable().subscribe{ item in
+            if item.element! {
+                self.showCompleteChekout()
+            }
+        }
     }
 }
 // MARK: - Extensions
@@ -77,7 +83,7 @@ extension PaymentViewViewController{
             if element.title != ""{
                 self.couponInput.text = element.title
             }
-            self.discountValue.text = element.value
+            self.discountValue.text = CurrencyHelper().checkCurrentCurrency(element.value)
         }.disposed(by: disposeBag)
     }
     
@@ -88,11 +94,21 @@ extension PaymentViewViewController{
     }
     
     func totalFees(){
-        subTotal.text = "\(viewModel.subTotal) USD"
-        shippingFees.text = "0 USD"
+        subTotal.text = CurrencyHelper().checkCurrentCurrency("\(viewModel.subTotal)")
+        shippingFees.text = CurrencyHelper().checkCurrentCurrency("0")
         viewModel.total.asObserver().subscribe{ item in
-            self.totalMoney.text = "\(item.element!) USD"
+            self.totalMoney.text = CurrencyHelper().checkCurrentCurrency("\(item.element!)")
         }.disposed(by: disposeBag)
+    }
+}
+extension PaymentViewViewController{
+    func showCompleteChekout(){
+        let dialogMessage = UIAlertController(title: "", message: "Thank you for shopping with us \nyour order is Completed", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ok", style: .cancel, handler: { action in
+            self.viewModel.clearStack()
+        })
+        dialogMessage.addAction(ok)
+        self.present(dialogMessage, animated: true, completion: nil)
     }
 }
 // MARK: - Extensions
@@ -118,7 +134,7 @@ extension PaymentViewViewController:UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Payment Options"
+        return "Payment Methods"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

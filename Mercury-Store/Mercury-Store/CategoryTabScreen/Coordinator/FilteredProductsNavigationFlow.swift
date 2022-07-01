@@ -11,4 +11,5 @@ protocol FilteredProductsNavigationFlow: AnyObject {
     func goToProductDetail(with product: Product)
     func goToFilteredProductScreen()
     func goToSearchScreen()
+    func viewWillAppearNavReturn()
 }

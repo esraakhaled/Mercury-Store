@@ -106,7 +106,7 @@ struct PostOrderRequest: Codable {
 struct OrderItemTest: Codable {
     let lineItems: [LineItemDraft]
     let customer: CustomerId
-    let current_subtotal_price: String
+    let totalDiscounts: String
     let current_total_discounts: String
     let total_price: String
     let financial_status: String
@@ -115,7 +115,7 @@ struct OrderItemTest: Codable {
     enum CodingKeys: String, CodingKey {
         case lineItems = "line_items"
         case customer
-        case current_subtotal_price
+        case totalDiscounts = "total_discounts"
         case current_total_discounts
         case total_price
         case financial_status

@@ -13,6 +13,7 @@ protocol CategoriesScreenViewModelType {
     var categories: Driver<[CustomCollection]> { get}
     var error: Driver<String?> { get }
     func goToSearchViewController()
+    func viewWillAppearNavReturn()
 }
 
 
@@ -58,6 +59,9 @@ final class CategoriesScreenViewModel: CategoriesScreenViewModelType {
     }
     func goToSearchViewController() {
         self.categoriesNavigationFlow?.goToSearchScreen()
+    }
+    func viewWillAppearNavReturn() {
+        self.categoriesNavigationFlow?.viewWillAppearNavReturn()
     }
     
 }

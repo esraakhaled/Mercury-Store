@@ -28,7 +28,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="Fsc-Zh-Atk"/>
                                 </constraints>
-                                <color key="tintColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                             </button>
@@ -39,16 +39,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="E5A-Xf-sAB">
-                                <rect key="frame" x="12" y="179.5" width="96.5" height="21.5"/>
+                                <rect key="frame" x="12" y="179.5" width="70" height="21.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="EGP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QT-Kh-ek4">
-                                        <rect key="frame" x="0.0" y="0.0" width="23.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="3199.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5k-M7-jnU">
-                                        <rect key="frame" x="26.5" y="0.0" width="70" height="21.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -83,7 +77,6 @@
             <size key="customSize" width="198" height="270"/>
             <connections>
                 <outlet property="containerViewForBrandProductsCell" destination="ycx-sE-fEN" id="9I4-ul-VLA"/>
-                <outlet property="currencyLabel" destination="4QT-Kh-ek4" id="kl8-Hv-9sB"/>
                 <outlet property="favouriteButton" destination="gpG-U3-ozM" id="t08-he-jwo"/>
                 <outlet property="productForBrandImage" destination="Gey-cE-vxO" id="aAx-9m-opV"/>
                 <outlet property="productForBrandName" destination="fPz-yT-VNw" id="WUS-0a-3Eu"/>
@@ -97,6 +90,9 @@
         <image name="wishlist" width="342" height="688"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

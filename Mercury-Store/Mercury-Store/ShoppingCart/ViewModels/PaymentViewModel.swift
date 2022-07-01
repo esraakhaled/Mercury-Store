@@ -17,8 +17,12 @@ protocol PaymentViewModelType{
     var paymentMethod:paymentOptions { set get }
     var subTotal: Double{ get }
     var total: BehaviorSubject<Double>{ get }
+    var orderComplete: Driver<Bool>{get }
     func confirmOrder()
     func getItemByTitle(title:String)
+    func getItemsById()
+    func clearStack()
+    func fetchCouponData()
 }
 
 class PaymentViewModel:PaymentViewModelType{
@@ -32,13 +36,14 @@ class PaymentViewModel:PaymentViewModelType{
     private let couponsSubject = BehaviorRelay<[PriceRule]>(value: [])
     private let isLoadingSubject = BehaviorRelay<Bool>(value: false)
     private let errorSubject = BehaviorRelay<String?>(value: nil)
+    private let completOrderSubject = BehaviorRelay<Bool>(value: false)
     private var braintreeClient: BTAPIClient?
     private let ordersProvider: OrdersProvider
     private weak var navigationFlow: ShoppingCartNavigationFlow!
     var CouponLoading: Driver<Bool>
     var CouponInfo: Driver<PriceRule>
     var CouponError: Driver<String?>
-    
+    var orderComplete: Driver<Bool>
     let userDefaults:UserDefaults
     let couponApi:PricesRulesProvider = PricesRulesApi()
     let disposeBag = DisposeBag()
@@ -55,6 +60,7 @@ class PaymentViewModel:PaymentViewModelType{
         CouponLoading = isLoadingSubject.asDriver(onErrorJustReturn: false)
         CouponError = errorSubject.asDriver(onErrorJustReturn: "Something went wrong")
         Coupons = couponsSubject.asDriver(onErrorJustReturn: [])
+        orderComplete = completOrderSubject.asDriver(onErrorJustReturn: false)
         self.ordersProvider = ordersProvider
         total = BehaviorSubject<Double>(value: 0)
         self.subTotal = 0
@@ -104,7 +110,7 @@ class PaymentViewModel:PaymentViewModelType{
                     if element.isEmpty{
                         self.couponSubject.accept(PriceRule())
                         self.handleCouponDiscount(discountValue: 0.0)
-                        self.errorSubject.accept("please enter avalid coupon ")
+                        self.errorSubject.accept("please enter a valid coupon ")
                     }else{
                         self.couponSubject.accept(element[0])
                         self.handleCouponDiscount(discountValue: abs(Double(element[0].value) ?? 0.0))
@@ -138,7 +144,8 @@ class PaymentViewModel:PaymentViewModelType{
                 total.onNext(1)
             }else{
                 self.totalItemsPrice()
-                total.onNext(subTotal - discountValue)
+                let totalMoney = subTotal - discountValue
+                total.onNext( Double(round(100 * totalMoney) / 100))
             }
         }catch(_){
         }
@@ -167,13 +174,14 @@ class PaymentViewModel:PaymentViewModelType{
                 print("the user canceled")
             }
         }
+        
     }
     
     private func postOrder(financial_status:String = "authorized") {
         let user = getUserFromUserDefaults()
-        let lineItems = getLineItems().map { LineItemDraft(quantity: $0.productQTY, variantID: $0.variantId, properties: [])}
-        let discountValue = couponSubject.value
-        let order = try! OrderItemTest(lineItems: lineItems, customer: CustomerId(id: user!.id), current_subtotal_price: "\(subTotal)", current_total_discounts: "\(discountValue)", total_price: "\(total.value())", financial_status: financial_status, shippingAddress: AddressRequestItem(address1: shippingAddress.address1, address2: shippingAddress.address2, city: shippingAddress.city, company: shippingAddress.company, firstName: shippingAddress.firstName, lastName: shippingAddress.lastName, phone: shippingAddress.phone, province: shippingAddress.province, country: shippingAddress.country, zip: shippingAddress.zip, name: shippingAddress.name, provinceCode: shippingAddress.provinceCode, countryCode: shippingAddress.countryCode, countryName: shippingAddress.countryName))
+        let lineItems = getLineItems().map { LineItemDraft(quantity: $0.productQTY, variantID: $0.variantId, properties: [PropertyDraft(imageName: $0.productImage, inventoryQuantity: "\($0.inventoryQuantity)")])}
+        let discountValue = abs (Double(couponSubject.value.value) ?? 0.0)
+        let order = try! OrderItemTest(lineItems: lineItems, customer: CustomerId(id: user!.id), totalDiscounts: "\(discountValue)", current_total_discounts: "\(discountValue)", total_price: "\(total.value())", financial_status: financial_status, shippingAddress: AddressRequestItem(address1: shippingAddress.address1, address2: shippingAddress.address2, city: shippingAddress.city, company: shippingAddress.company, firstName: shippingAddress.firstName, lastName: shippingAddress.lastName, phone: shippingAddress.phone, province: shippingAddress.province, country: shippingAddress.country, zip: shippingAddress.zip, name: shippingAddress.name, provinceCode: shippingAddress.provinceCode, countryCode: shippingAddress.countryCode, countryName: shippingAddress.countryName))
 
         if (user != nil) {
             let newOrderRequest = PostOrderRequest(order: order)
@@ -182,8 +190,7 @@ class PaymentViewModel:PaymentViewModelType{
                 guard let `self` = self else {fatalError()}
                 self.resetCoupon()
                 CartCoreDataManager.shared.deleteAll()
-                self.navigationFlow.popToRoot()
-                
+                self.completOrderSubject.accept(true)
             }).disposed(by: disposeBag)
         }
     }
@@ -213,4 +220,7 @@ class PaymentViewModel:PaymentViewModelType{
         }
     }
     
+    func clearStack(){
+        self.navigationFlow.popToRoot()
+    }
 }

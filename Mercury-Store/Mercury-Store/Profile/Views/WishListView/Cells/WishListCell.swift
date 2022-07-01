@@ -32,7 +32,7 @@ class WishListCell: UITableViewCell {
     //
     func config(item:SavedProductItem){
         titleLable.text = item.productTitle
-        priceLable.text = "\(item.productPrice)EGP"
+        priceLable.text = CurrencyHelper().checkCurrentCurrency("\(item.productPrice)")
         imgView.downloadImage(url: URL(string: item.productImage)! , placeholder: UIImage(named: "placeholder"), imageIndicator: .gray , completion: nil)
         savedItem = item
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -42,6 +42,7 @@ class WishListCell: UITableViewCell {
         guard let deleteCallback = deleteCallback else {
             return
         }
+        
         deleteCallback(savedItem!)
     }
     

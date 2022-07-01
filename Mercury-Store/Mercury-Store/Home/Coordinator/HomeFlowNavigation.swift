@@ -11,4 +11,5 @@ protocol HomeFlowNavigation: AnyObject {
     func goToFilteredProduct(with id: Int)
     func goToBrandDetails(with brandItem: SmartCollectionElement)
     func goToSearchViewController()
+    func viewWillAppearNavBarReturn()
 }

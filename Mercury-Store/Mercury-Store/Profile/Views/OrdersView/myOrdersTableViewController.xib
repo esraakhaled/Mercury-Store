@@ -10,23 +10,61 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="myOrdersTableViewController" customModule="Mercury_Store" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="emptyView" destination="jdu-ss-dPq" id="sl3-30-4NG"/>
+                <outlet property="orderTableView" destination="yFh-Pl-bet" id="aLP-hD-pOJ"/>
+                <outlet property="view" destination="QYo-O7-xDO" id="KJK-VU-Sfn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="164" sectionHeaderHeight="22" sectionFooterHeight="22" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="QYo-O7-xDO">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vLr-E1-eTs"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="170" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-Pl-bet">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-ss-dPq">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptySearch" translatesAutoresizingMaskIntoConstraints="NO" id="h8J-Lr-LfS">
+                            <rect key="frame" x="12" y="42" width="390" height="409"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We don't have any completed Orders" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hp-03-owX">
+                            <rect key="frame" x="12" y="475" width="390" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="h8J-Lr-LfS" firstAttribute="leading" secondItem="jdu-ss-dPq" secondAttribute="leading" constant="12" id="1Mv-es-vZZ"/>
+                        <constraint firstItem="9Hp-03-owX" firstAttribute="top" secondItem="h8J-Lr-LfS" secondAttribute="bottom" constant="24" id="2Sw-zp-fcM"/>
+                        <constraint firstItem="9Hp-03-owX" firstAttribute="trailing" secondItem="h8J-Lr-LfS" secondAttribute="trailing" id="KwP-xM-HAj"/>
+                        <constraint firstItem="h8J-Lr-LfS" firstAttribute="height" secondItem="jdu-ss-dPq" secondAttribute="height" multiplier="0.5" id="PYB-f7-WNc"/>
+                        <constraint firstAttribute="trailing" secondItem="h8J-Lr-LfS" secondAttribute="trailing" constant="12" id="YFd-Wv-dAc"/>
+                        <constraint firstItem="h8J-Lr-LfS" firstAttribute="top" secondItem="jdu-ss-dPq" secondAttribute="top" constant="42" id="iMW-pp-Jm0"/>
+                        <constraint firstItem="9Hp-03-owX" firstAttribute="leading" secondItem="h8J-Lr-LfS" secondAttribute="leading" id="rN9-ka-6Qa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="BOL-v4-VxV"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <connections>
-                <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
-                <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
-            </connections>
-            <point key="canvasLocation" x="133" y="98"/>
-        </tableView>
+            <constraints>
+                <constraint firstItem="BOL-v4-VxV" firstAttribute="bottom" secondItem="yFh-Pl-bet" secondAttribute="bottom" id="GtC-kw-uJ3"/>
+                <constraint firstItem="yFh-Pl-bet" firstAttribute="top" secondItem="BOL-v4-VxV" secondAttribute="top" id="Rie-4Q-krd"/>
+                <constraint firstItem="jdu-ss-dPq" firstAttribute="trailing" secondItem="BOL-v4-VxV" secondAttribute="trailing" id="SQd-MX-6LN"/>
+                <constraint firstItem="BOL-v4-VxV" firstAttribute="top" secondItem="jdu-ss-dPq" secondAttribute="top" id="YWg-Qq-b9m"/>
+                <constraint firstItem="jdu-ss-dPq" firstAttribute="leading" secondItem="BOL-v4-VxV" secondAttribute="leading" id="akQ-LE-j9C"/>
+                <constraint firstItem="yFh-Pl-bet" firstAttribute="leading" secondItem="BOL-v4-VxV" secondAttribute="leading" id="bWg-B6-CiV"/>
+                <constraint firstItem="BOL-v4-VxV" firstAttribute="trailing" secondItem="yFh-Pl-bet" secondAttribute="trailing" id="kw4-dS-TZg"/>
+                <constraint firstItem="jdu-ss-dPq" firstAttribute="bottom" secondItem="BOL-v4-VxV" secondAttribute="bottom" id="s5z-oz-He7"/>
+            </constraints>
+            <point key="canvasLocation" x="441" y="-546"/>
+        </view>
     </objects>
     <resources>
+        <image name="emptySearch" width="1300" height="1300"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

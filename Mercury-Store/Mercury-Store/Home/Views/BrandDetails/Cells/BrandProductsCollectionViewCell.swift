@@ -38,7 +38,7 @@ class BrandProductsCollectionViewCell: UICollectionViewCell {
         }
         productForBrandImage.downloadImage(url: url , placeholder: UIImage(named: "placeholder"), imageIndicator: .gray, completion: nil)
         productForBrandName.text = item.title
-        productForBrandPrice.text = item.variants[0].price
+        productForBrandPrice.text = CurrencyHelper().checkCurrentCurrency(item.variants[0].price)
         favouriteButton.favouriteState(state: viewModel.getFavouriteState(productID: item.id))
         favouriteButton.rx.tap.throttle(.milliseconds(5000), latest: false, scheduler: MainScheduler.instance).subscribe(onNext: { [ weak self ] in
             guard let self = self else{return}
@@ -66,9 +66,14 @@ extension BrandProductsCollectionViewCell {
         if viewModel.userID != nil {
             guard let item = item else { return  }
             let savedValue = SavedProductItem(inventoryQuantity: item.variants[0].inventoryQuantity, variantId: item.variants[0].id, productID: Decimal(item.id), productTitle: item.title, productImage: item.image.src, productPrice: Double(item.variants[0].price )! , productQTY: 0, producrState: productStates.favourite.rawValue)
-            let favourite = self.viewModel.toggleFavourite(product: savedValue)
-            self.favouriteButton.favouriteState(state: favourite)
-            self.makeToast("Added to Favourite", duration: 3.0, position: .top)
+            self.viewModel.modifyOrderInWishIfFavIdIsNil(item, variant: item.variants[0])
+            if  self.viewModel.toggleFavourite(product: savedValue) {
+                self.favouriteButton.favouriteState(state: true)
+                self.makeToast("Added to Favourite", duration: 3.0, position: .top)
+            }else{
+                self.favouriteButton.favouriteState(state: false)
+                self.makeToast("Removed From Favourite", duration: 3.0, position: .top)
+            }
         }
         else {
             self.showNotLogedDialog()
@@ -82,4 +87,6 @@ extension BrandProductsCollectionViewCell {
         guard let parentVC = self.parentViewController else { return }
         parentVC.present(dialogMessage, animated: true, completion: nil)
     }
+    
+    
 }

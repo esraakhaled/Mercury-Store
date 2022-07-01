@@ -8,5 +8,5 @@
 import Foundation
 struct PaymentModel{
     public static let braintreeAuthorization = "sandbox_hc9f5yt8_ktwtbtktdzdx9t4d"
-    public static let currencyCode = "ْUSD"
+    public static let currencyCode = "USD"
 }

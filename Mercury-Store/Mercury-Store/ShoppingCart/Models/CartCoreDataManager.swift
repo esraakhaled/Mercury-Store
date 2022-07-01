@@ -30,7 +30,10 @@ class CartCoreDataManager {
     }
     
     func updateExistingItem(with item: SavedProductItem) {
-        let _ = coreDataModel.update(updateitem: item)
+        let users = coreDataModel.getItemByID(productID: Int(truncating: NSDecimalNumber(decimal: item.productID)))
+        var product = item
+        product.user_id = users.user_id
+        let _ = coreDataModel.update(updateitem: product)
     }
     
     func deleteItem(with item: SavedProductItem) {
